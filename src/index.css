@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import "react-toastify/dist/ReactToastify.css";
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* * {
+    border: 1px solid black;
+} */
+
+/* Light Theme */
+:root {
+    --primary-color: #1976d2;
+    /* Primary color for your theme */
+    --secondary-color: #2196f3;
+    /* Secondary color for your theme */
+    --tertiary-color: #90caf9;
+    /* Tertiary color for your theme */
+    --text-color: #000000;
+    /* Text color for your theme */
+    --background-color: #ffffff;
+    /* Background color for your theme */
+}
+
+.light-mode {
+    --primary-color: #1976d2;
+    /* Primary color for your theme */
+    --secondary-color: #2196f3;
+    /* Secondary color for your theme */
+    --tertiary-color: #90caf9;
+    /* Tertiary color for your theme */
+    --text-color: #000000;
+    /* Text color for your theme */
+    --background-color: #ffffff;
+    /* Background color for your theme*/
+}
+
+/* Dark Theme */
+.dark-mode {
+    --primary-color: #1e88e5;
+    --secondary-color: #1565c0;
+    --tertiary-color: #0d47a1;
+    --text-color: #ffffff;
+    --background-color: #424242;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Open Sans;
+}
+
+.box {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.form-look-and-feel{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.transparent-bg{
+    background-color: transparent;
+}
+
+/* .transparent-bg:hover{
+    background-color: transparent;
+} */
+
+.big-emoji{
+    font-size: 30px;
+}
+
+form {
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form > *{
+    margin: 10px;
+}
+
+form span {
+    color: red;
+    font-weight: 600;
+}
+
+button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--tertiary-color);
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.card {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--text-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    margin: 5px;
+    height: 200px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+span {
+    color: var(--text-color);
+}
+
+p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+li, label {
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h5 {
+    font-size: 0.83em;
+}
+
+h6 {
+    font-size: 0.67em;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.row>* {
+    margin: 5px;
+}
+
+.danger {
+    background-color: rgb(189, 20, 20);
+    color: var(--background-color);
+}
+
+.danger:hover {
+    background-color: rgb(74, 12, 12);
+    color: var(--background-color);
+}

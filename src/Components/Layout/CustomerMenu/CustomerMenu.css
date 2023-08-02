@@ -1,0 +1,10 @@
+.CustomerMenu {
+	display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.CustomerMenu > *{
+    margin: 15px;
+}
