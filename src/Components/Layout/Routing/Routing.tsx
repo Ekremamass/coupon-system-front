@@ -46,27 +46,27 @@ function Routing(): JSX.Element {
                 <Route path="/admin/companies" element={<CompanyList/>} />
                 <Route path="/admin/addCompany" element={<AddCompany/>} />
                 <Route path="/admin/getCompany" element={<GetCompany/>} />
-                <Route path="/admin/deleteCompany" element={<DeleteCompany/>} />
-                <Route path="/admin/updateCompany" element={<UpdateCompany/>} />
+                <Route path="/admin/deleteCompany/:id" element={<DeleteCompany/>} />
+                <Route path="/admin/updateCompany/:id" element={<UpdateCompany/>} />
                 <Route path="/admin/customers" element={<CustomerList/>} />
                 <Route path="/admin/addCustomer" element={<AddCustomer/>} />
                 <Route path="/admin/getCustomer" element={<GetCustomer/>} />
-                <Route path="/admin/deleteCustomer" element={<DeleteCustomer/>} />
-                <Route path="/admin/updateCustomer" element={<UpdateCustomer/>} />
+                <Route path="/admin/deleteCustomer/:id" element={<DeleteCustomer/>} />
+                <Route path="/admin/updateCustomer/:id" element={<UpdateCustomer/>} />
                 {/* Company routes */}
                 <Route path="/company/addCoupon" element={<AddCoupon/>} />
                 <Route path="/company/coupons" element={<CouponList/>} />
                 <Route path="/company/category" element={<CouponListByCategory/>} />
                 <Route path="/company/maxPrice" element={<CouponListByMaxPrice/>} />
-                <Route path="/company/deleteCoupon" element={<DeleteCoupon/>} />
-                <Route path="/company/updateCoupon" element={<UpdateCoupon/>} />
+                <Route path="/company/deleteCoupon/:id" element={<DeleteCoupon/>} />
+                <Route path="/company/updateCoupon/:id" element={<UpdateCoupon/>} />
                 <Route path="/company" element={<CompanyDetails/>} />
                 {/* Customer routes */}
                 <Route path="/customer/coupons" element={<CouponsList/>} />
                 <Route path="/customer/category" element={<CouponsListByCategory/>} />
                 <Route path="/customer/maxPrice" element={<CouponsListByMaxPrice/>} />
                 <Route path="/customer" element={<CustomerDetails/>} />
-                <Route path="/customer/purchase" element={<PurchaseCoupon/>} />
+                <Route path="/customer/purchase/" element={<PurchaseCoupon/>} />
 
                 <Route path="/*" element={<Page404/>} />
 
