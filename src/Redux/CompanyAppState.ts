@@ -25,20 +25,20 @@ const companiesSlice = createSlice({
       gotAllCompaniesAction(state, action: PayloadAction<CompanyModel[]>) {
         state.companies = action.payload;
       },
-      gotSingleCompanyAction(state, action: PayloadAction<CompanyModel>) {
-        state.companies.push(action.payload);
-      },
+      // gotSingleCompanyAction(state, action: PayloadAction<CompanyModel>) {
+      //   state.companies.push(action.payload);
+      // },
       addedCompanyAction(state, action: PayloadAction<CompanyModel>) {
         state.companies.push(action.payload);
       },
-      updatedCompanyACtion(state, action: PayloadAction<CompanyModel>) {
+      updatedCompanyAction(state, action: PayloadAction<CompanyModel>) {
         const idx = state.companies.findIndex(
           (company) => company.id === action.payload.id
         );
         state.companies[idx] = action.payload;
       },
       deletedCompanyAction(state, action: PayloadAction<number>) {
-        state.companies = state.companies.filter((task) => task.id !== action.payload);
+        state.companies = state.companies.filter((company) => company.id !== action.payload);
       },
       removedCompaniesAction(state) {
         state.companies = [];
@@ -48,9 +48,9 @@ const companiesSlice = createSlice({
   
   export const {
     gotAllCompaniesAction,
-    gotSingleCompanyAction,
+    // gotSingleCompanyAction,
     addedCompanyAction,
-    updatedCompanyACtion,
+    updatedCompanyAction,
     deletedCompanyAction,
     removedCompaniesAction,
   } = companiesSlice.actions;

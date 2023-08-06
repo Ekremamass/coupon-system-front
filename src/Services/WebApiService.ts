@@ -24,6 +24,25 @@ class WebApiService {
         return axios.get<CompanyModel[]>(urlService.admin + "/companies",{headers});
     }
 
+    public addCompany(data: CompanyModel): Promise<AxiosResponse<CompanyModel>> {
+        const headers = { 'Authorization': store.getState().authReducer.user.token };
+        return axios.post<any>(urlService.admin + "/company", data,{headers});
+    }
+
+    public addCustomer(data: CustomerModel): Promise<AxiosResponse<CustomerModel>> {
+        const headers = { 'Authorization': store.getState().authReducer.user.token };
+        return axios.post<any>(urlService.admin + "/customer", data,{headers});
+    }
+
+    public getAllCustomers(): Promise<AxiosResponse<CustomerModel[]>>{
+        const headers = { 'Authorization': store.getState().authReducer.user.token };
+        return axios.get<CustomerModel[]>(urlService.admin + "/customers",{headers});
+    }
+
+    public updateCompany(id: number, company: CompanyModel): Promise<AxiosResponse<CompanyModel>> {
+        const headers = { 'Authorization': store.getState().authReducer.user.token }
+        return axios.put(`${urlService.admin}/company/${id}`, company, { headers });
+    }
 }
 
 const webApiService = new WebApiService();

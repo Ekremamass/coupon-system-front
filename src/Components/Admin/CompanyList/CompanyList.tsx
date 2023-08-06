@@ -16,9 +16,6 @@ function CompanyList(): JSX.Element {
       const dispatch = useDispatch();
     
       useEffect(() => {
-        if (companies.length > 0) {
-          return;
-        }
         webApiService
           .getAllCompanies()
           .then((res) => {

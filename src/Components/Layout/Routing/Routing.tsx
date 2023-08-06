@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import App from "../../../App";
 import AddCompany from "../../Admin/AddCompany/AddCompany";
 import AddCustomer from "../../Admin/AddCustomer/AddCustomer";
@@ -29,8 +30,14 @@ import Home from "../../Pages/Home/Home";
 import Page404 from "../../Pages/Page404/Page404";
 import "./Routing.css";
 import { Route, Routes } from "react-router-dom";
+import { RootState } from "../../../Redux/Store";
+import { ClientType } from "../../../Models/Login";
 
 function Routing(): JSX.Element {
+    const clientType = useSelector((state:RootState)=>state.authReducer.user.clientType);
+    const isAdmin = clientType === ClientType.ADMINISTRATOR;
+    const isCompany = clientType === ClientType.COMPANY;
+    const isCustomer = clientType === ClientType.CUSTOMER;
     return (
         <div className="Routing">
             <Routes>
@@ -43,30 +50,30 @@ function Routing(): JSX.Element {
                 <Route path="/logout" element={<Logout/>} />
                 <Route path="/register" element={<Register/>} />
                 {/* Admin routes */}
-                <Route path="/admin/companies" element={<CompanyList/>} />
-                <Route path="/admin/addCompany" element={<AddCompany/>} />
-                <Route path="/admin/getCompany" element={<GetCompany/>} />
-                <Route path="/admin/deleteCompany/:id" element={<DeleteCompany/>} />
-                <Route path="/admin/updateCompany/:id" element={<UpdateCompany/>} />
-                <Route path="/admin/customers" element={<CustomerList/>} />
-                <Route path="/admin/addCustomer" element={<AddCustomer/>} />
-                <Route path="/admin/getCustomer" element={<GetCustomer/>} />
-                <Route path="/admin/deleteCustomer/:id" element={<DeleteCustomer/>} />
-                <Route path="/admin/updateCustomer/:id" element={<UpdateCustomer/>} />
+                {isAdmin && <Route path="/admin/companies" element={<CompanyList/>} />}
+                {isAdmin && <Route path="/admin/addCompany" element={<AddCompany/>} />}
+                {isAdmin && <Route path="/admin/getCompany" element={<GetCompany/>} />}
+                {isAdmin && <Route path="/admin/deleteCompany/:id" element={<DeleteCompany/>} />}
+                {isAdmin && <Route path="/admin/updateCompany/:id" element={<UpdateCompany/>} />}
+                {isAdmin && <Route path="/admin/customers" element={<CustomerList/>} />}
+                {isAdmin && <Route path="/admin/addCustomer" element={<AddCustomer/>} />}
+                {isAdmin && <Route path="/admin/getCustomer" element={<GetCustomer/>} />}
+                {isAdmin && <Route path="/admin/deleteCustomer/:id" element={<DeleteCustomer/>} />}
+                {isAdmin && <Route path="/admin/updateCustomer/:id" element={<UpdateCustomer/>} />}
                 {/* Company routes */}
-                <Route path="/company/addCoupon" element={<AddCoupon/>} />
-                <Route path="/company/coupons" element={<CouponList/>} />
-                <Route path="/company/category" element={<CouponListByCategory/>} />
-                <Route path="/company/maxPrice" element={<CouponListByMaxPrice/>} />
-                <Route path="/company/deleteCoupon/:id" element={<DeleteCoupon/>} />
-                <Route path="/company/updateCoupon/:id" element={<UpdateCoupon/>} />
-                <Route path="/company" element={<CompanyDetails/>} />
+                {isCompany && <Route path="/company/addCoupon" element={<AddCoupon/>} />}
+                {isCompany&& <Route path="/company/coupons" element={<CouponList/>} />}
+                {isCompany&& <Route path="/company/category" element={<CouponListByCategory/>} />}
+                {isCompany&& <Route path="/company/maxPrice" element={<CouponListByMaxPrice/>} />}
+                {isCompany&& <Route path="/company/deleteCoupon/:id" element={<DeleteCoupon/>} />}
+                {isCompany&& <Route path="/company/updateCoupon/:id" element={<UpdateCoupon/>} />}
+                {isCompany&& <Route path="/company" element={<CompanyDetails/>} />}
                 {/* Customer routes */}
-                <Route path="/customer/coupons" element={<CouponsList/>} />
-                <Route path="/customer/category" element={<CouponsListByCategory/>} />
-                <Route path="/customer/maxPrice" element={<CouponsListByMaxPrice/>} />
-                <Route path="/customer" element={<CustomerDetails/>} />
-                <Route path="/customer/purchase/" element={<PurchaseCoupon/>} />
+                {isCustomer && <Route path="/customer/coupons" element={<CouponsList/>} />}
+                {isCustomer && <Route path="/customer/category" element={<CouponsListByCategory/>} />}
+                {isCustomer && <Route path="/customer/maxPrice" element={<CouponsListByMaxPrice/>} />}
+                {isCustomer && <Route path="/customer" element={<CustomerDetails/>} />}
+                {isCustomer && <Route path="/customer/purchase/" element={<PurchaseCoupon/>} />}
 
                 <Route path="/*" element={<Page404/>} />
 

@@ -1,3 +1,4 @@
+import { customersReducer } from './CustomerAppState';
 import { companiesReducer } from './CompanyAppState';
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './AuthAppState';
@@ -6,6 +7,7 @@ import { authReducer } from './AuthAppState';
 const rootReducer = {
     authReducer: authReducer,
     companiesReducer: companiesReducer,
+    customersReducer: customersReducer,
     // add more reducers here if needed
 };
 

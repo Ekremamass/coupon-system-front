@@ -1,5 +1,3 @@
-import { CouponModel } from "./Coupon";
-
 export interface CompanyModel {
   id: number;
   name: string;
