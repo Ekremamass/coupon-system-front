@@ -1,3 +1,4 @@
+import { couponsReducer } from './CouponAppState';
 import { customersReducer } from './CustomerAppState';
 import { companiesReducer } from './CompanyAppState';
 import { configureStore } from '@reduxjs/toolkit';
@@ -8,7 +9,7 @@ const rootReducer = {
     authReducer: authReducer,
     companiesReducer: companiesReducer,
     customersReducer: customersReducer,
-    // add more reducers here if needed
+    couponsReducer: couponsReducer,
 };
 
 

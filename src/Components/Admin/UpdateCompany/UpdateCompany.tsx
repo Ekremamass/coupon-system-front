@@ -17,7 +17,7 @@ function UpdateCompany(): JSX.Element {
   const params = useParams();
   const id = +(params.id || 0);
   const [obj] = useState<CompanyModel>(
-    store.getState().companiesReducer.companies.filter((t) => t.id === id)[0]
+    store.getState().companiesReducer.companies.filter((c) => c.id === id)[0]
   );
 
   const defaultValuesObj = { ...obj }; //Spread Operator

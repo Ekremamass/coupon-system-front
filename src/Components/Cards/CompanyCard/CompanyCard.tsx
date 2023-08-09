@@ -14,7 +14,6 @@ function CompanyCard(props: CompanyCardProps): JSX.Element {
       <p>🔒&nbsp;password : {props.company.password}</p>
       <hr />
             <div className="row">
-
                 <Link to={`/admin/updateCompany/${props.company.id}`}><button>✏️ Edit Company</button></Link>
                 <Link to={`/admin/deleteCompany/${props.company.id}`}> <button>🗑️ Delete Company</button></Link>
             </div>

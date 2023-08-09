@@ -1,4 +1,3 @@
-import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 
 class NotificationService {
@@ -11,7 +10,7 @@ class NotificationService {
   }
 
   public msgFormatter(msg: any): string {
-    const str = msg as AxiosError;
+    const str = msg as any;
     if (str?.response?.data?.description) {
         return str?.response?.data?.description as string;
     }
