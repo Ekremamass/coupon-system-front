@@ -7,8 +7,10 @@ import notifyService from "../../../Services/NotificationService";
 import * as zod from "zod";
 import { CompanyModel } from "../../../Models/Company";
 import CompanyCard from "../../Cards/CompanyCard/CompanyCard";
+import { useTranslation } from "react-i18next";
 
 function GetCompany(): JSX.Element {
+  const {t} = useTranslation();
   const [company, setCompany] = useState<CompanyModel>();
 
   const schema = zod.object({
@@ -31,7 +33,7 @@ function GetCompany(): JSX.Element {
   const onSubmit : SubmitHandler<FormData>= (data: FormData) => {
     webApiService.getOneCompany(data.id)
     .then((res) => {
-      notifyService.success("got company #"+data.id);
+      notifyService.success(t('got_comp',{ns:'messages'})+data.id);
       setCompany(res.data);
     })
     .catch((err)=>notifyService.error(err));
@@ -43,10 +45,10 @@ function GetCompany(): JSX.Element {
         {errors?.id ? (
           <span>{errors.id.message}</span>
         ) : (
-          <label htmlFor="id">id</label>
+          <label htmlFor="id">{t('id')}</label>
         )}
         <input {...register("id", { valueAsNumber: true })} name="id" type="number" />
-        <button disabled={!isValid || isSubmitting}>Find Company</button>
+        <button disabled={!isValid || isSubmitting}>{t('find',{ns:'company'})}</button>
       </form>
       <br/>
       {company !== undefined ? (

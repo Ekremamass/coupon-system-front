@@ -7,8 +7,10 @@ import notifyService from "../../../Services/NotificationService";
 import * as zod from "zod";
 import { CustomerModel } from "../../../Models/Customer";
 import CustomerCard from "../../Cards/CustomerCard/CustomerCard";
+import { useTranslation } from "react-i18next";
 
 function GetCustomer(): JSX.Element {
+  const {t} = useTranslation();
   const [customer, setCustomer] = useState<CustomerModel>();
 
   const schema = zod.object({
@@ -33,7 +35,7 @@ function GetCustomer(): JSX.Element {
     webApiService
       .getOneCustomer(data.id)
       .then((res) => {
-        notifyService.success("got customer #" + data.id);
+        notifyService.success(t('got_cus',{ns:'messages'}) + data.id);
         setCustomer(res.data);
       })
       .catch((err) => notifyService.error(err));
@@ -45,14 +47,14 @@ function GetCustomer(): JSX.Element {
         {errors?.id ? (
           <span>{errors.id.message}</span>
         ) : (
-          <label htmlFor="id">id</label>
+          <label htmlFor="id">{t('id')}</label>
         )}
         <input
           {...register("id", { valueAsNumber: true })}
           name="id"
           type="number"
         />
-        <button disabled={!isValid || isSubmitting}>Find Customer</button>
+        <button disabled={!isValid || isSubmitting}>{t('find',{ns:'customer'})}</button>
       </form>
       <br />
       {customer !== undefined ? <CustomerCard customer={customer} /> : <></>}

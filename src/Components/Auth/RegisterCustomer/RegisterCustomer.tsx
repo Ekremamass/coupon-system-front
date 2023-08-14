@@ -7,8 +7,10 @@ import webApiService from "../../../Services/WebApiService";
 import notifyService from "../../../Services/NotificationService";
 import { RegisterCustomerDetails } from "../../../Models/Register";
 import { CustomerModel } from "../../../Models/Customer";
+import { useTranslation } from "react-i18next";
 
 function RegisterCustomer(): JSX.Element {
+  const {t} = useTranslation();
   const navigate = useNavigate();
 
   const schema = zod
@@ -46,7 +48,7 @@ function RegisterCustomer(): JSX.Element {
     return webApiService
       .registerCustomer(reqBody)
       .then(() => {
-        notifyService.success("Registered successfully")
+        notifyService.success(t('registered',{ns:'messages'}))
         navigate("/login");
       })
       .catch((err) => notifyService.error(err));
@@ -58,63 +60,63 @@ function RegisterCustomer(): JSX.Element {
         {errors?.firstName ? (
           <span>{errors.firstName.message}</span>
         ) : (
-          <label htmlFor="firstName">First name</label>
+          <label htmlFor="firstName">{t('first', { ns: 'customer' })}</label>
         )}
         <input
           {...register("firstName")}
           name="firstName"
           type="text"
-          placeholder="First Name..."
+          placeholder={t('first', { ns: 'customer' })}
         />
 
         {errors?.lastName ? (
           <span>{errors.lastName.message}</span>
         ) : (
-          <label htmlFor="lastName">Last name</label>
+          <label htmlFor="lastName">{t('last', { ns: 'customer' })}</label>
         )}
         <input
           {...register("lastName")}
           name="lastName"
           type="text"
-          placeholder="Last name..."
+          placeholder={t('last', { ns: 'customer' })}
         />
 
         {errors?.email ? (
           <span>{errors.email.message}</span>
         ) : (
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t('email', { ns: 'login' })}</label>
         )}
         <input
           {...register("email")}
           name="email"
           type="email"
-          placeholder="Email..."
+          placeholder={t('email', { ns: 'login' })}
         />
 
         {errors?.password ? (
           <span>{errors.password.message}</span>
         ) : (
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t('password', { ns: 'login' })}</label>
         )}
         <input
           {...register("password")}
           name="password"
           type="password"
-          placeholder="Password..."
+          placeholder={t('password', { ns: 'login' })}
         />
 
         {errors?.confirm ? (
           <span>{errors.confirm.message}</span>
         ) : (
-          <label htmlFor="confirm">Confirm Password</label>
+          <label htmlFor="confirm">{t('confirm', { ns: 'login' })}</label>
         )}
         <input
           {...register("confirm")}
           name="confirm"
           type="password"
-          placeholder="Confirm password..."
+          placeholder={t('confirm', { ns: 'login' })}
         />
-        <button disabled={!isValid || isSubmitting}>Register</button>
+        <button disabled={!isValid || isSubmitting}>{t('register', { ns: 'login' })}</button>
       </form>
     </div>
   );

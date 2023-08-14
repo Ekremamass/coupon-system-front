@@ -10,8 +10,10 @@ import { useState } from "react";
 import store from "./../../../Redux/Store";
 import { CustomerModel } from "../../../Models/Customer";
 import { updatedCustomerAction } from "../../../Redux/CustomerAppState";
+import { useTranslation } from "react-i18next";
 
 function UpdateCustomer(): JSX.Element {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();

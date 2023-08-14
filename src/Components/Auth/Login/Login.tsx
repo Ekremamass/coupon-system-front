@@ -1,4 +1,3 @@
-import Select from "react-select";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,8 +7,10 @@ import { LoginReqModel } from "../../../Models/Login";
 import { userLoggedIn } from "../../../Redux/AuthAppState";
 import notifyService from "../../../Services/NotificationService";
 import webApiService from "../../../Services/WebApiService";
+import { useTranslation } from "react-i18next";
 
 function Login(): JSX.Element {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,39 +46,39 @@ function Login(): JSX.Element {
         {errors?.email ? (
           <span>{errors.email.message}</span>
         ) : (
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t('email', { ns: 'login' })}</label>
         )}
         <input
           {...register("email")}
           name="email"
           type="email"
-          placeholder="Email..."
+          placeholder={t('email', { ns: 'login' })}
         />
 
         {errors?.password ? (
           <span>{errors.password.message}</span>
         ) : (
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t('password', { ns: 'login' })}</label>
         )}
         <input
           {...register("password")}
           name="password"
           type="password"
-          placeholder="Password..."
+          placeholder={t('email', { ns: 'login' })}
         />
 
         {errors?.clientType ? (
           <span>{errors.clientType.message}</span>
         ) : (
-          <label htmlFor="clientType">Client type</label>
+          <label htmlFor="clientType">{t('client', { ns: 'login' })}</label>
         )}
         <select {...register("clientType")}>
-          <option value="ADMINISTRATOR">Admin</option>
-          <option value="COMPANY">Company</option>
-          <option value="CUSTOMER">Customer</option>
+          <option value="ADMINISTRATOR">{t('admin', { ns: 'login' })}</option>
+          <option value="COMPANY">{t('company', { ns: 'login' })}</option>
+          <option value="CUSTOMER">{t('customer', { ns: 'login' })}</option>
         </select>
 
-        <button disabled={!isValid || isSubmitting}>Login</button>
+        <button disabled={!isValid || isSubmitting}>{t('login', { ns: 'login' })}</button>
       </form>
     </div>
   );

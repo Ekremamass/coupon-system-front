@@ -10,8 +10,10 @@ import { useState } from "react";
 import store from "./../../../Redux/Store";
 import { CompanyModel } from "../../../Models/Company";
 import { updatedCompanyAction } from "../../../Redux/CompanyAppState";
+import { useTranslation } from "react-i18next";
 
 function UpdateCompany(): JSX.Element {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -45,7 +47,7 @@ function UpdateCompany(): JSX.Element {
     return webApiService
       .updateCompany(id, data)
       .then(() => {
-        notifyService.success(`updated company #${id}`);
+        notifyService.success(`${t('updated_comp', { ns: 'messages' })}${id}`);
         console.log(data);
         dispatch(updatedCompanyAction(data));
         navigate("/admin/companies");
@@ -62,7 +64,7 @@ function UpdateCompany(): JSX.Element {
         {errors?.name ? (
           <span>{errors.name.message}</span>
         ) : (
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">{t('name', { ns: 'company' })}</label>
         )}
         <input
           {...register("name")}
@@ -74,7 +76,7 @@ function UpdateCompany(): JSX.Element {
         {errors?.email ? (
           <span>{errors.email.message}</span>
         ) : (
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t('email', { ns: 'login' })}</label>
         )}
         <input
           {...register("email")}
@@ -86,7 +88,7 @@ function UpdateCompany(): JSX.Element {
         {errors?.password ? (
           <span>{errors.password.message}</span>
         ) : (
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t('password', { ns: 'login' })}</label>
         )}
         <input
           {...register("password")}
@@ -95,7 +97,7 @@ function UpdateCompany(): JSX.Element {
           placeholder="Password..."
         />
 
-        <button disabled={!isValid || isSubmitting}>Update Company</button>
+        <button disabled={!isValid || isSubmitting}>{t('update', { ns: 'company' })}</button>
       </form>
     </div>
   );

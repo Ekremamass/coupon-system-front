@@ -8,26 +8,28 @@ import notifyService from "../../../Services/NotificationService";
 import { gotAllCompaniesAction } from "../../../Redux/CompanyAppState";
 import CompanyCard from "../../Cards/CompanyCard/CompanyCard";
 import EmptyView from "../../Pages/EmptyView/EmptyView";
+import { useTranslation } from "react-i18next";
 
 function CompanyList(): JSX.Element {
-    const [companies, setCompanies] = useState<CompanyModel[]>(
-        store.getState().companiesReducer.companies
-      );
-      const dispatch = useDispatch();
-    
-      useEffect(() => {
-        webApiService
-          .getAllCompanies()
-          .then((res) => {
-            notifyService.success("got all companies");
-            setCompanies(res.data);
-            dispatch(gotAllCompaniesAction(res.data));
-          })
-          .catch((err) => notifyService.error(err));
-      }, []);
+  const { t } = useTranslation();
+  const [companies, setCompanies] = useState<CompanyModel[]>(
+    store.getState().companiesReducer.companies
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    webApiService
+      .getAllCompanies()
+      .then((res) => {
+        notifyService.success(t("got_all_comp", { ns: "messages" }));
+        setCompanies(res.data);
+        dispatch(gotAllCompaniesAction(res.data));
+      })
+      .catch((err) => notifyService.error(err));
+  }, []);
   return (
     <div className="CompanyList">
-      <h1>Companies List</h1>
+      <h1>{t("title", { ns: "company" })}</h1>
 
       {companies.length !== 0 ? (
         companies.map((c, idx) => (
@@ -35,8 +37,8 @@ function CompanyList(): JSX.Element {
         ))
       ) : (
         <EmptyView
-          title={"No Items Found"}
-          description={"there are no companies right now"}
+          title={t("empty")}
+          description={t("empty", { ns: "company" })}
         />
       )}
     </div>

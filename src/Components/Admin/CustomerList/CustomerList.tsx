@@ -8,8 +8,10 @@ import EmptyView from "../../Pages/EmptyView/EmptyView";
 import { CustomerModel } from "../../../Models/Customer";
 import { gotAllCustomersAction } from "../../../Redux/CustomerAppState";
 import CustomerCard from "../../Cards/CustomerCard/CustomerCard";
+import { useTranslation } from "react-i18next";
 
 function CustomerList(): JSX.Element {
+  const {t} = useTranslation();
   const [customers, setCustomers] = useState<CustomerModel[]>(
     store.getState().customersReducer.customers
   );
@@ -19,7 +21,7 @@ function CustomerList(): JSX.Element {
     webApiService
       .getAllCustomers()
       .then((res) => {
-        notifyService.success("got all customers");
+        notifyService.success(t('got_all_cus',{ns:'messages'}));
         setCustomers(res.data);
         dispatch(gotAllCustomersAction(res.data));
       })
@@ -30,7 +32,7 @@ function CustomerList(): JSX.Element {
   }, []);
   return (
     <div className="CustomerList">
-      <h1>Customers List</h1>
+      <h1>{t('title',{ns:'customer'})}</h1>
 
       {customers.length !== 0 ? (
         customers.map((c, idx) => (
@@ -39,7 +41,7 @@ function CustomerList(): JSX.Element {
       ) : (
         <EmptyView
           title={"No Items Found"}
-          description={"there are no customers right now"}
+          description={t('empty',{ns:'customer'})}
         />
       )}
     </div>

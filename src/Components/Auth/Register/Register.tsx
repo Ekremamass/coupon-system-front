@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import RegisterCompany from "../RegisterCompany/RegisterCompany";
 import RegisterCustomer from "../RegisterCustomer/RegisterCustomer";
 import "./Register.css";
+import { useTranslation } from "react-i18next";
 
 function Register(): JSX.Element {
   const [selectedOption, setSelectedOption] = useState("COMPANY");
-
+  const {t} = useTranslation();
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
   };
@@ -13,8 +14,8 @@ function Register(): JSX.Element {
   return (
     <div className="Register">
       <select value={selectedOption} onChange={handleChange}>
-        <option value="COMPANY">Company</option>
-        <option value="CUSTOMER">Customer</option>
+        <option value="COMPANY">{t('company', { ns: 'login' })}</option>
+        <option value="CUSTOMER">{t('customer', { ns: 'login' })}</option>
       </select>
       {selectedOption === "COMPANY" ? <RegisterCompany /> : <RegisterCustomer />}
     </div>

@@ -8,8 +8,10 @@ import notifyService from "../../../Services/NotificationService";
 import { CustomerModel } from "../../../Models/Customer";
 import { useDispatch } from "react-redux";
 import { addedCustomerAction } from "../../../Redux/CustomerAppState";
+import { useTranslation } from "react-i18next";
 
 function AddCustomer(): JSX.Element {
+  const {t} = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -33,7 +35,7 @@ function AddCustomer(): JSX.Element {
     return webApiService
       .addCustomer(data)
       .then((res) => {
-        notifyService.success("Added successfully");
+        notifyService.success(t('added', { ns: 'messages' }));
         dispatch(addedCustomerAction(res.data));
         navigate("/admin/customers");
       })
@@ -46,52 +48,52 @@ function AddCustomer(): JSX.Element {
         {errors?.firstName ? (
           <span>{errors.firstName.message}</span>
         ) : (
-          <label htmlFor="firstName">First name</label>
+          <label htmlFor="firstName">{t('first', { ns: 'customer' })}</label>
         )}
         <input
           {...register("firstName")}
           name="firstName"
           type="text"
-          placeholder="First Name..."
+          placeholder={t('first', { ns: 'customer' })}
         />
 
         {errors?.lastName ? (
           <span>{errors.lastName.message}</span>
         ) : (
-          <label htmlFor="lastName">Last name</label>
+          <label htmlFor="lastName">{t('last', { ns: 'customer' })}</label>
         )}
         <input
           {...register("lastName")}
           name="lastName"
           type="text"
-          placeholder="Last name..."
+          placeholder={t('last', { ns: 'customer' })}
         />
 
         {errors?.email ? (
           <span>{errors.email.message}</span>
         ) : (
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t('email', { ns: 'login' })}</label>
         )}
         <input
           {...register("email")}
           name="email"
           type="email"
-          placeholder="Email..."
+          placeholder={t('email', { ns: 'login' })}
         />
 
         {errors?.password ? (
           <span>{errors.password.message}</span>
         ) : (
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t('password', { ns: 'login' })}</label>
         )}
         <input
           {...register("password")}
           name="password"
           type="password"
-          placeholder="Password..."
+          placeholder={t('password', { ns: 'login' })}
         />
 
-        <button disabled={!isValid || isSubmitting}>Add Customer</button>
+        <button disabled={!isValid || isSubmitting}>{t('add', { ns: 'customer' })}</button>
       </form>
     </div>
   );

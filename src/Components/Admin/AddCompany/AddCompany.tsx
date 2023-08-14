@@ -8,10 +8,12 @@ import notifyService from "../../../Services/NotificationService";
 import { CompanyModel } from "../../../Models/Company";
 import { useDispatch } from "react-redux";
 import { addedCompanyAction } from "../../../Redux/CompanyAppState";
+import { useTranslation } from "react-i18next";
 
 function AddCompany(): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {t} = useTranslation();
 
   const schema = zod.object({
     name: zod.string().nonempty("Name is required"),
@@ -34,7 +36,7 @@ function AddCompany(): JSX.Element {
       .then((res) => {
         console.log(res);
         dispatch(addedCompanyAction(res.data));
-        notifyService.success("Added successfully");
+        notifyService.success(t('added', { ns: 'messages' }));
         navigate("/admin/companies");
       })
       .catch((err) => notifyService.error(err));
@@ -46,40 +48,40 @@ function AddCompany(): JSX.Element {
         {errors?.name ? (
           <span>{errors.name.message}</span>
         ) : (
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">{t('name', { ns: 'company' })}</label>
         )}
         <input
           {...register("name")}
           name="name"
           type="text"
-          placeholder="name..."
+          placeholder={t('name', { ns: 'company' })}
         />
 
         {errors?.email ? (
           <span>{errors.email.message}</span>
         ) : (
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t('email', { ns: 'login' })}</label>
         )}
         <input
           {...register("email")}
           name="email"
           type="email"
-          placeholder="Email..."
+          placeholder={t('email', { ns: 'login' })}
         />
 
         {errors?.password ? (
           <span>{errors.password.message}</span>
         ) : (
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t('password', { ns: 'login' })}</label>
         )}
         <input
           {...register("password")}
           name="password"
           type="password"
-          placeholder="Password..."
+          placeholder={t('password', { ns: 'login' })}
         />
 
-        <button disabled={!isValid || isSubmitting}>Add Company</button>
+        <button disabled={!isValid || isSubmitting}>{t('add', { ns: 'company' })}</button>
       </form>
     </div>
   );

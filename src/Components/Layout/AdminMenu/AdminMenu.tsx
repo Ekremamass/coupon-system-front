@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import "./AdminMenu.css";
+import { useTranslation } from "react-i18next";
 
 function AdminMenu(): JSX.Element {
+  const {t} = useTranslation();
   return (
     <div className="AdminMenu">
-      <Link to={"/admin/companies"}>🏢 Companies List</Link>
-      <Link to={"/admin/addCompany"}>➕ Add Company</Link>
-      <Link to={"/admin/getCompany"}>🏢 One Company</Link>
-      <Link to={"/admin/customers"}>💁 Customers List</Link>
-      <Link to={"/admin/addCustomer"}>➕ Add Customer</Link>
-      <Link to={"/admin/getCustomer"}>💁 One Customer</Link>      
+      <Link to={"/admin/companies"}>🏢 {t("title", { ns: "company" })}</Link>
+      <Link to={"/admin/addCompany"}>➕ {t("add", { ns: "company" })}</Link>
+      <Link to={"/admin/getCompany"}>🏢 {t("one", { ns: "company" })}</Link>
+      <Link to={"/admin/customers"}>💁 {t("title", { ns: "customer" })}</Link>
+      <Link to={"/admin/addCustomer"}>➕ {t("add", { ns: "customer" })}</Link>
+      <Link to={"/admin/getCustomer"}>💁 {t("one", { ns: "customer" })}</Link>      
     </div>
   );
 }

@@ -4,9 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import webApiService from "../../../Services/WebApiService";
 import notifyService from "../../../Services/NotificationService";
 import { deletedCompanyAction } from "../../../Redux/CompanyAppState";
+import { useTranslation } from "react-i18next";
 
 function DeleteCompany(): JSX.Element {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
 
   const params = useParams();
   const id = +(params.id || 0);
@@ -17,7 +19,7 @@ function DeleteCompany(): JSX.Element {
     webApiService
       .deleteCompany(id)
       .then(() => {
-        notifyService.success(`deleted company #${id} successfully`);
+        notifyService.success(`${t("deleted_comp", { ns: "messages" })}${id}`);
         dispatch(deletedCompanyAction(id));
         navigate(-1);
       })
@@ -29,13 +31,13 @@ function DeleteCompany(): JSX.Element {
   };
   return (
     <div className="DeleteCompany">
-      <h1>Delete Customer</h1>
-      <p>Are you sure you want to delete customer #{id}?</p>
+      <h1>{t("delete", { ns: "company" })}</h1>
+      <p>{t("delete_q", { ns: "company" })} #{id}?</p>
       <div className="row">
         <button onClick={yes} className="danger">
-          Yes
+        {t("yes")}
         </button>
-        <button onClick={no}>Cancel</button>
+        <button onClick={no}>{t("cancel")}</button>
       </div>
     </div>
   );

@@ -37,10 +37,10 @@ function CouponCard(props: CouponCardProps): JSX.Element {
       <p>🔢&nbsp;amount : {props.coupon.amount}</p>
       <p>💲&nbsp;price : {props.coupon.price}&#8362;</p>
       <p>
-        📅&nbsp;start date : {moment(props.coupon.startDate).format("DD/MM/yy")}
+        📅&nbsp;start date : {moment(props.coupon.startDate,"DD-MM-YYYY").format("DD/MM/yy")}
       </p>
       <p>
-        📅&nbsp;end date : {moment(props.coupon.endDate).format("DD/MM/yy")}
+        📅&nbsp;end date : {moment(props.coupon.endDate,"DD-MM-YYYY").format("DD/MM/yy")}
       </p>
 
       <hr />
