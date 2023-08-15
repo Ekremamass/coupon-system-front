@@ -75,6 +75,12 @@ class WebApiService {
         return axios.get<CouponModel[]>(urlService.company + "/coupons",{headers});
     }
 
+    
+    public addCoupon(data: CouponModel): Promise<AxiosResponse<CouponModel>> {
+        const headers = { 'Authorization': store.getState().authReducer.user.token };
+        return axios.post<any>(urlService.company + "/coupon", data,{headers});
+    }
+
 }
 
 const webApiService = new WebApiService();

@@ -50,7 +50,7 @@ function Routing(): JSX.Element {
                 <Route path="/logout" element={<Logout/>} />
                 <Route path="/register" element={<Register/>} />
                 {/* Admin routes */}
-                {isAdmin && <Route path="/admin/companies" element={<CompanyList/>} />}
+                { <Route path="/admin/companies" element={<CompanyList/>} />}
                 {isAdmin && <Route path="/admin/addCompany" element={<AddCompany/>} />}
                 {isAdmin && <Route path="/admin/getCompany" element={<GetCompany/>} />}
                 {isAdmin && <Route path="/admin/deleteCompany/:id" element={<DeleteCompany/>} />}
@@ -63,8 +63,6 @@ function Routing(): JSX.Element {
                 {/* Company routes */}
                 {isCompany && <Route path="/company/addCoupon" element={<AddCoupon/>} />}
                 {isCompany&& <Route path="/company/coupons" element={<CouponList/>} />}
-                {isCompany&& <Route path="/company/category" element={<CouponListByCategory/>} />}
-                {isCompany&& <Route path="/company/maxPrice" element={<CouponListByMaxPrice/>} />}
                 {isCompany&& <Route path="/company/deleteCoupon/:id" element={<DeleteCoupon/>} />}
                 {isCompany&& <Route path="/company/updateCoupon/:id" element={<UpdateCoupon/>} />}
                 {isCompany&& <Route path="/company" element={<CompanyDetails/>} />}

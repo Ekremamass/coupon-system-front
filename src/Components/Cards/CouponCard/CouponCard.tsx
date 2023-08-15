@@ -2,12 +2,16 @@ import { Link } from "react-router-dom";
 import { Category, CouponModel } from "../../../Models/Coupon";
 import "./CouponCard.css";
 import moment from "moment";
+import store from "../../../Redux/Store";
+import { ClientType } from "../../../Models/Login";
 
 interface CouponCardProps {
   coupon: CouponModel;
 }
 
 function CouponCard(props: CouponCardProps): JSX.Element {
+  const isCompany =
+    store.getState().authReducer.user.clientType == ClientType.COMPANY;
   return (
     <div className="CouponCard card">
       <div className="title-and-image">
@@ -37,22 +41,26 @@ function CouponCard(props: CouponCardProps): JSX.Element {
       <p>🔢&nbsp;amount : {props.coupon.amount}</p>
       <p>💲&nbsp;price : {props.coupon.price}&#8362;</p>
       <p>
-        📅&nbsp;start date : {moment(props.coupon.startDate,"DD-MM-YYYY").format("DD/MM/yy")}
+        📅&nbsp;start date :{" "}
+        {moment(props.coupon.startDate, "DD-MM-YYYY").format("DD/MM/yy")}
       </p>
       <p>
-        📅&nbsp;end date : {moment(props.coupon.endDate,"DD-MM-YYYY").format("DD/MM/yy")}
+        📅&nbsp;end date :{" "}
+        {moment(props.coupon.endDate, "DD-MM-YYYY").format("DD/MM/yy")}
       </p>
 
       <hr />
-      <div className="row ">
-        <Link to={`/company/updateCoupon/${props.coupon.id}`}>
-          <button>✏️ Edit Coupon</button>
-        </Link>
-        <Link to={`/company/deleteCoupon/${props.coupon.id}`}>
-          {" "}
-          <button>🗑️ Delete Coupon</button>
-        </Link>
-      </div>
+      {isCompany && (
+        <div className="row ">
+          <Link to={`/company/updateCoupon/${props.coupon.id}`}>
+            <button>✏️ Edit Coupon</button>
+          </Link>
+          <Link to={`/company/deleteCoupon/${props.coupon.id}`}>
+            {" "}
+            <button>🗑️ Delete Coupon</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
