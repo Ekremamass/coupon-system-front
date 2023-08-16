@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 function AddCompany(): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const schema = zod.object({
     name: zod.string().nonempty("Name is required"),
@@ -36,7 +36,7 @@ function AddCompany(): JSX.Element {
       .then((res) => {
         console.log(res);
         dispatch(addedCompanyAction(res.data));
-        notifyService.success(t('added', { ns: 'messages' }));
+        notifyService.success(t("added", { ns: "messages" }));
         navigate("/admin/companies");
       })
       .catch((err) => notifyService.error(err));
@@ -44,44 +44,47 @@ function AddCompany(): JSX.Element {
 
   return (
     <div className="AddCompany">
+      <h2>{t("add", { ns: "company" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         {errors?.name ? (
           <span>{errors.name.message}</span>
         ) : (
-          <label htmlFor="name">{t('name', { ns: 'company' })}</label>
+          <label htmlFor="name">{t("name", { ns: "company" })}</label>
         )}
         <input
           {...register("name")}
           name="name"
           type="text"
-          placeholder={t('name', { ns: 'company' })}
+          placeholder={t("name", { ns: "company" })}
         />
 
         {errors?.email ? (
           <span>{errors.email.message}</span>
         ) : (
-          <label htmlFor="email">{t('email', { ns: 'login' })}</label>
+          <label htmlFor="email">{t("email", { ns: "login" })}</label>
         )}
         <input
           {...register("email")}
           name="email"
           type="email"
-          placeholder={t('email', { ns: 'login' })}
+          placeholder={t("email", { ns: "login" })}
         />
 
         {errors?.password ? (
           <span>{errors.password.message}</span>
         ) : (
-          <label htmlFor="password">{t('password', { ns: 'login' })}</label>
+          <label htmlFor="password">{t("password", { ns: "login" })}</label>
         )}
         <input
           {...register("password")}
           name="password"
           type="password"
-          placeholder={t('password', { ns: 'login' })}
+          placeholder={t("password", { ns: "login" })}
         />
 
-        <button disabled={!isValid || isSubmitting}>{t('add', { ns: 'company' })}</button>
+        <button disabled={!isValid || isSubmitting}>
+          {t("add", { ns: "company" })}
+        </button>
       </form>
     </div>
   );

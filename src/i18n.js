@@ -13,7 +13,7 @@ i18next
   .init({
     fallbackLng: "en",
 
-    ns: ["default","login","messages","company","customer"],
+    ns: ["default","login","messages","company","customer","coupon"],
     defaultNS: "default",
 
     supportedLngs: ["en","he","ar"],

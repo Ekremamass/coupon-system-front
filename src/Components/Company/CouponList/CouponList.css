@@ -1,3 +1,11 @@
 .CouponList {
 	
 }
+
+.CouponList > button {
+	margin: 15px;
+}
+
+.buttons > button{
+    margin: 5px;
+}

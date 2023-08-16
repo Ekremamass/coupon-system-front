@@ -1,11 +1,11 @@
 .Menu {
-	display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 50px;
 }
 
-.Menu > *{
+.Menu>* {
     margin: 15px;
 }

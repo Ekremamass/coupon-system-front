@@ -8,10 +8,22 @@ import notifyService from "../../../Services/NotificationService";
 import { RegisterCustomerDetails } from "../../../Models/Register";
 import { CustomerModel } from "../../../Models/Customer";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 function RegisterCustomer(): JSX.Element {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [confirmShown, setConfirmShown] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+
+  const toggleConfirm = () => {
+    setConfirmShown(!confirmShown);
+  };
 
   const schema = zod
     .object({
@@ -48,7 +60,7 @@ function RegisterCustomer(): JSX.Element {
     return webApiService
       .registerCustomer(reqBody)
       .then(() => {
-        notifyService.success(t('registered',{ns:'messages'}))
+        notifyService.success(t("registered", { ns: "messages" }));
         navigate("/login");
       })
       .catch((err) => notifyService.error(err));
@@ -60,63 +72,71 @@ function RegisterCustomer(): JSX.Element {
         {errors?.firstName ? (
           <span>{errors.firstName.message}</span>
         ) : (
-          <label htmlFor="firstName">{t('first', { ns: 'customer' })}</label>
+          <label htmlFor="firstName">{t("first", { ns: "customer" })}</label>
         )}
         <input
           {...register("firstName")}
           name="firstName"
           type="text"
-          placeholder={t('first', { ns: 'customer' })}
+          placeholder={t("first", { ns: "customer" })}
         />
 
         {errors?.lastName ? (
           <span>{errors.lastName.message}</span>
         ) : (
-          <label htmlFor="lastName">{t('last', { ns: 'customer' })}</label>
+          <label htmlFor="lastName">{t("last", { ns: "customer" })}</label>
         )}
         <input
           {...register("lastName")}
           name="lastName"
           type="text"
-          placeholder={t('last', { ns: 'customer' })}
+          placeholder={t("last", { ns: "customer" })}
         />
 
         {errors?.email ? (
           <span>{errors.email.message}</span>
         ) : (
-          <label htmlFor="email">{t('email', { ns: 'login' })}</label>
+          <label htmlFor="email">{t("email", { ns: "login" })}</label>
         )}
         <input
           {...register("email")}
           name="email"
           type="email"
-          placeholder={t('email', { ns: 'login' })}
+          placeholder={t("email", { ns: "login" })}
         />
 
         {errors?.password ? (
           <span>{errors.password.message}</span>
         ) : (
-          <label htmlFor="password">{t('password', { ns: 'login' })}</label>
+          <label htmlFor="password">{t("password", { ns: "login" })}</label>
         )}
-        <input
-          {...register("password")}
-          name="password"
-          type="password"
-          placeholder={t('password', { ns: 'login' })}
-        />
+        <div className="row">
+          <input
+            {...register("password")}
+            name="password"
+            type={passwordShown ? "text" : "password"}
+            placeholder={t("password", { ns: "login" })}
+          />
+          <button onClick={togglePassword}>Show Password</button>
+        </div>
 
         {errors?.confirm ? (
           <span>{errors.confirm.message}</span>
         ) : (
-          <label htmlFor="confirm">{t('confirm', { ns: 'login' })}</label>
+          <label htmlFor="confirm">{t("confirm", { ns: "login" })}</label>
         )}
-        <input
-          {...register("confirm")}
-          name="confirm"
-          type="password"
-          placeholder={t('confirm', { ns: 'login' })}
-        />
-        <button disabled={!isValid || isSubmitting}>{t('register', { ns: 'login' })}</button>
+        <div className="row">
+          <input
+            {...register("confirm")}
+            name="confirm"
+            type={confirmShown ? "text" : "password"}
+            placeholder={t("confirm", { ns: "login" })}
+          />
+          <button onClick={toggleConfirm}>Show Password</button>
+        </div>
+        <button disabled={!isValid || isSubmitting}>
+          {t("register", { ns: "login" })}
+        </button>
       </form>
     </div>
   );

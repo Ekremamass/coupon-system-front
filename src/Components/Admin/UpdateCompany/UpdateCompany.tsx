@@ -13,7 +13,7 @@ import { updatedCompanyAction } from "../../../Redux/CompanyAppState";
 import { useTranslation } from "react-i18next";
 
 function UpdateCompany(): JSX.Element {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -42,13 +42,10 @@ function UpdateCompany(): JSX.Element {
   });
 
   const onSubmit: SubmitHandler<CompanyModel> = (data: CompanyModel) => {
-    console.log(data);
-    console.log(id);
     return webApiService
       .updateCompany(id, data)
       .then(() => {
-        notifyService.success(`${t('updated_comp', { ns: 'messages' })}${id}`);
-        console.log(data);
+        notifyService.success(`${t("updated_comp", { ns: "messages" })}${id}`);
         dispatch(updatedCompanyAction(data));
         navigate("/admin/companies");
       })
@@ -57,14 +54,21 @@ function UpdateCompany(): JSX.Element {
 
   return (
     <div className="UpdateCompany">
+      <h2>{t("edit", { ns: "company" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="id">Id</label>
-        <input {...register("id")} name="id" type="text" value={obj.id} disabled={true} />
+        <input
+          {...register("id")}
+          name="id"
+          type="text"
+          value={obj.id}
+          disabled={true}
+        />
 
         {errors?.name ? (
           <span>{errors.name.message}</span>
         ) : (
-          <label htmlFor="name">{t('name', { ns: 'company' })}</label>
+          <label htmlFor="name">{t("name", { ns: "company" })}</label>
         )}
         <input
           {...register("name")}
@@ -76,7 +80,7 @@ function UpdateCompany(): JSX.Element {
         {errors?.email ? (
           <span>{errors.email.message}</span>
         ) : (
-          <label htmlFor="email">{t('email', { ns: 'login' })}</label>
+          <label htmlFor="email">{t("email", { ns: "login" })}</label>
         )}
         <input
           {...register("email")}
@@ -88,7 +92,7 @@ function UpdateCompany(): JSX.Element {
         {errors?.password ? (
           <span>{errors.password.message}</span>
         ) : (
-          <label htmlFor="password">{t('password', { ns: 'login' })}</label>
+          <label htmlFor="password">{t("password", { ns: "login" })}</label>
         )}
         <input
           {...register("password")}
@@ -97,7 +101,9 @@ function UpdateCompany(): JSX.Element {
           placeholder="Password..."
         />
 
-        <button disabled={!isValid || isSubmitting}>{t('update', { ns: 'company' })}</button>
+        <button disabled={!isValid || isSubmitting}>
+          {t("update", { ns: "company" })}
+        </button>
       </form>
     </div>
   );

@@ -9,9 +9,9 @@ function Header(): JSX.Element {
   return (
     <div className="Header">
       <SelectLanguage/>
-        <span>🔖</span>
+        <span>🎫</span>
         <h1>{t('title')}</h1>
-        <span>🔖</span>
+        <span>🎫</span>
       <AuthMenu />
     </div>
   );

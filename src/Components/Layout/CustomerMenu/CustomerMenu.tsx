@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import "./CustomerMenu.css";
+import { useTranslation } from "react-i18next";
 
 function CustomerMenu(): JSX.Element {
+    const {t} = useTranslation();
     return (
         <div className="CustomerMenu">
-			<Link to={'/customer/coupons'}>🎫 Purchased Coupons</Link>
-			<Link to={'/customer/purchase'}>🎫 Purchase Coupon</Link>
-			<Link to={'/customer'}>💁 Customer Details</Link>
+			<Link to={'/customer/coupons'}>🎫 {t("purchased", { ns: "customer" })}</Link>
+			<Link to={'/customer/all'}>🎫  {t("all", { ns: "customer" })}</Link>
+			<Link to={'/customer'}>💁  {t("details", { ns: "customer" })}</Link>
         </div>
     );
 }

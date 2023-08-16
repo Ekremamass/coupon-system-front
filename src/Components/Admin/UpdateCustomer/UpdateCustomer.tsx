@@ -13,7 +13,7 @@ import { updatedCustomerAction } from "../../../Redux/CustomerAppState";
 import { useTranslation } from "react-i18next";
 
 function UpdateCustomer(): JSX.Element {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -49,7 +49,6 @@ function UpdateCustomer(): JSX.Element {
       .updateCustomer(id, data)
       .then(() => {
         notifyService.success(`updated customer #${id}`);
-        console.log(data);
         dispatch(updatedCustomerAction(data));
         navigate("/admin/customers");
       })
@@ -58,6 +57,7 @@ function UpdateCustomer(): JSX.Element {
 
   return (
     <div className="UpdateCustomer">
+      <h2>{t("edit", { ns: "customer" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="id">Id</label>
         <input

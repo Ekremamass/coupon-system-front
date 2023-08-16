@@ -8,11 +8,18 @@ import { userLoggedIn } from "../../../Redux/AuthAppState";
 import notifyService from "../../../Services/NotificationService";
 import webApiService from "../../../Services/WebApiService";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 function Login(): JSX.Element {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   const schema = zod.object({
     email: zod.string().email("Invalid email").nonempty("Email is required"),
@@ -41,44 +48,49 @@ function Login(): JSX.Element {
       });
   };
   return (
-    <div className="Login">
+    <div className="Login form-look-and-feel">
       <form onSubmit={handleSubmit(onSubmit)}>
         {errors?.email ? (
           <span>{errors.email.message}</span>
         ) : (
-          <label htmlFor="email">{t('email', { ns: 'login' })}</label>
+          <label htmlFor="email">{t("email", { ns: "login" })}</label>
         )}
         <input
           {...register("email")}
           name="email"
           type="email"
-          placeholder={t('email', { ns: 'login' })}
+          placeholder={t("email", { ns: "login" })}
         />
 
         {errors?.password ? (
           <span>{errors.password.message}</span>
         ) : (
-          <label htmlFor="password">{t('password', { ns: 'login' })}</label>
+          <label htmlFor="password">{t("password", { ns: "login" })}</label>
         )}
-        <input
-          {...register("password")}
-          name="password"
-          type="password"
-          placeholder={t('email', { ns: 'login' })}
-        />
+        <div className="row">
+          <input
+            {...register("password")}
+            name="password"
+            type={passwordShown ? "text" : "password"}
+            placeholder={t("password", { ns: "login" })}
+          />
+          <button onClick={togglePassword}>{t("show", { ns: "login" })}</button>
+        </div>
 
         {errors?.clientType ? (
           <span>{errors.clientType.message}</span>
         ) : (
-          <label htmlFor="clientType">{t('client', { ns: 'login' })}</label>
+          <label htmlFor="clientType">{t("client", { ns: "login" })}</label>
         )}
         <select {...register("clientType")}>
-          <option value="ADMINISTRATOR">{t('admin', { ns: 'login' })}</option>
-          <option value="COMPANY">{t('company', { ns: 'login' })}</option>
-          <option value="CUSTOMER">{t('customer', { ns: 'login' })}</option>
+          <option value="ADMINISTRATOR">{t("admin", { ns: "login" })}</option>
+          <option value="COMPANY">{t("company", { ns: "login" })}</option>
+          <option value="CUSTOMER">{t("customer", { ns: "login" })}</option>
         </select>
 
-        <button disabled={!isValid || isSubmitting}>{t('login', { ns: 'login' })}</button>
+        <button disabled={!isValid || isSubmitting}>
+          {t("login", { ns: "login" })}
+        </button>
       </form>
     </div>
   );

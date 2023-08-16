@@ -31,7 +31,7 @@ function DeleteCustomer(): JSX.Element {
   };
   return (
     <div className="DeleteCustomer">
-      <h1>Delete Customer</h1>
+      <h2>Delete Customer</h2>
       <p>{t('delete_q',{ns:'customer'})}{id}?</p>
       <div className="row">
         <button onClick={yes} className="danger">

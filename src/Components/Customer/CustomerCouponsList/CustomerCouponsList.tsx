@@ -1,7 +1,7 @@
+import "./CustomerCouponsList.css";
 import { useDispatch } from "react-redux";
 import { Category, CouponModel } from "../../../Models/Coupon";
 import store from "../../../Redux/Store";
-import "./CouponList.css";
 import * as zod from "zod";
 import { useEffect, useState } from "react";
 import webApiService from "../../../Services/WebApiService";
@@ -13,13 +13,14 @@ import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-function CouponList(): JSX.Element {
+function CustomerCouponsList(): JSX.Element {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [coupons, setCoupons] = useState<CouponModel[]>(
     store.getState().couponsReducer.coupons
   );
   const [inputValue, setInputValue] = useState("");
+
 
   const clearInput = () => {
     setInputValue("");
@@ -28,7 +29,7 @@ function CouponList(): JSX.Element {
   const fetchData = () => {
     clearInput();
     webApiService
-      .getCompanyCoupons()
+      .getCustomerCoupons()
       .then((res) => {
         notifyService.success(t("got_coupons", { ns: "messages" }));
         setCoupons(res.data);
@@ -65,7 +66,7 @@ function CouponList(): JSX.Element {
   const onSubmit: SubmitHandler<FormData> = (data: FormData) => {
     if (activeForm === "category") {
       webApiService
-        .getCouponsByCategory(data.category)
+        .getCusCouponsByCategory(data.category)
         .then((res) => {
           notifyService.success(
             t("got_coupons_cat", { ns: "messages" }) + " " + data.category
@@ -77,7 +78,7 @@ function CouponList(): JSX.Element {
     } else if (activeForm === "max") {
       console.log(data.max);
       webApiService
-        .getCouponsByMaxPrice(data.max)
+        .getCusCouponsByMaxPrice(data.max)
         .then((res) => {
           notifyService.success(
             t("got_coupons_max", { ns: "messages" }) + " " + data.max
@@ -88,27 +89,9 @@ function CouponList(): JSX.Element {
         .catch((err) => notifyService.error(err));
     }
   };
-
   return (
-    <div className="CouponList">
-      <h2>{t("list", { ns: "coupon" })}</h2>
-      <div className="buttons">
-        <button
-          type="button"
-          onClick={() => setActiveForm("category")}
-          disabled={activeForm === "category"}
-        >
-          {t("choose_cat", { ns: "coupon" })}
-        </button>
-        <button
-          type="button"
-          onClick={() => setActiveForm("max")}
-          disabled={activeForm === "max"}
-        >
-          {t("enter_max", { ns: "coupon" })}
-        </button>
-      </div>
-      
+    <div className="CustomerCouponsList">
+      <h2>{t("purchased", { ns: "customer" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           {activeForm === "category" ? (
@@ -116,7 +99,7 @@ function CouponList(): JSX.Element {
               {errors?.category ? (
                 <span>{errors.category.message}</span>
               ) : (
-                <label htmlFor="category">{t("category", { ns: "coupon" })} </label>
+                <label htmlFor="category">Category</label>
               )}
               <select
                 {...register("category")}
@@ -137,7 +120,7 @@ function CouponList(): JSX.Element {
               {errors?.max ? (
                 <span>{errors.max.message}</span>
               ) : (
-                <label htmlFor="max">{t("max", { ns: "coupon" })} </label>
+                <label htmlFor="max">{t("max", { ns: "coupon" })}</label>
               )}
               <input
                 {...register("max", { valueAsNumber: true })}
@@ -149,6 +132,23 @@ function CouponList(): JSX.Element {
               />
             </>
           ) : null}
+        </div>
+
+        <div className="buttons">
+          <button
+            type="button"
+            onClick={() => setActiveForm("category")}
+            disabled={activeForm === "category"}
+          >
+            {t("choose_cat", { ns: "coupon" })}
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveForm("max")}
+            disabled={activeForm === "max"}
+          >
+            {t("enter_max", { ns: "coupon" })}
+          </button>
         </div>
 
         <button type="submit" disabled={!isValid || isSubmitting}>
@@ -172,4 +172,4 @@ function CouponList(): JSX.Element {
   );
 }
 
-export default CouponList;
+export default CustomerCouponsList;

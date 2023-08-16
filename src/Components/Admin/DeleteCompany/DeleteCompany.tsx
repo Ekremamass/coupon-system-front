@@ -31,8 +31,8 @@ function DeleteCompany(): JSX.Element {
   };
   return (
     <div className="DeleteCompany">
-      <h1>{t("delete", { ns: "company" })}</h1>
-      <p>{t("delete_q", { ns: "company" })} #{id}?</p>
+      <h2>{t("delete", { ns: "company" })}</h2>
+      <p>{t("delete_q", { ns: "company" })} {id}?</p>
       <div className="row">
         <button onClick={yes} className="danger">
         {t("yes")}

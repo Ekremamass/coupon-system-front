@@ -16,13 +16,8 @@ import Register from "../../Auth/Register/Register";
 import AddCoupon from "../../Company/AddCoupon/AddCoupon";
 import CompanyDetails from "../../Company/CompanyDetails/CompanyDetails";
 import CouponList from "../../Company/CouponList/CouponList";
-import CouponListByCategory from "../../Company/CouponListByCategory/CouponListByCategory";
-import CouponListByMaxPrice from "../../Company/CouponListByMaxPrice/CouponListByMaxPrice";
 import DeleteCoupon from "../../Company/DeleteCoupon/DeleteCoupon";
 import UpdateCoupon from "../../Company/UpdateCoupon/UpdateCoupon";
-import CouponsList from "../../Customer/CouponsList/CouponsList";
-import CouponsListByCategory from "../../Customer/CouponsListByCategory/CouponsListByCategory";
-import CouponsListByMaxPrice from "../../Customer/CouponsListByMaxPrice/CouponsListByMaxPrice";
 import CustomerDetails from "../../Customer/CustomerDetails/CustomerDetails";
 import PurchaseCoupon from "../../Customer/PurchaseCoupon/PurchaseCoupon";
 import About from "../../Pages/About/About";
@@ -32,6 +27,8 @@ import "./Routing.css";
 import { Route, Routes } from "react-router-dom";
 import { RootState } from "../../../Redux/Store";
 import { ClientType } from "../../../Models/Login";
+import CustomerCouponsList from "../../Customer/CustomerCouponsList/CustomerCouponsList";
+import AllCoupons from "../../Customer/AllCoupons/AllCoupons";
 
 function Routing(): JSX.Element {
     const clientType = useSelector((state:RootState)=>state.authReducer.user.clientType);
@@ -67,11 +64,10 @@ function Routing(): JSX.Element {
                 {isCompany&& <Route path="/company/updateCoupon/:id" element={<UpdateCoupon/>} />}
                 {isCompany&& <Route path="/company" element={<CompanyDetails/>} />}
                 {/* Customer routes */}
-                {isCustomer && <Route path="/customer/coupons" element={<CouponsList/>} />}
-                {isCustomer && <Route path="/customer/category" element={<CouponsListByCategory/>} />}
-                {isCustomer && <Route path="/customer/maxPrice" element={<CouponsListByMaxPrice/>} />}
+                {isCustomer && <Route path="/customer/coupons" element={<CustomerCouponsList/>} />}
                 {isCustomer && <Route path="/customer" element={<CustomerDetails/>} />}
-                {isCustomer && <Route path="/customer/purchase/" element={<PurchaseCoupon/>} />}
+                {isCustomer && <Route path="/customer/purchase/:id" element={<PurchaseCoupon/>} />}
+                {isCustomer && <Route path="/customer/all" element={<AllCoupons/>} />}
 
                 <Route path="/*" element={<Page404/>} />
 

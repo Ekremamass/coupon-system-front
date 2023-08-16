@@ -29,7 +29,7 @@ function CompanyList(): JSX.Element {
   }, []);
   return (
     <div className="CompanyList">
-      <h1>{t("title", { ns: "company" })}</h1>
+      <h2>{t("title", { ns: "company" })}</h2>
 
       {companies.length !== 0 ? (
         companies.map((c, idx) => (

@@ -32,7 +32,7 @@ function CustomerList(): JSX.Element {
   }, []);
   return (
     <div className="CustomerList">
-      <h1>{t('title',{ns:'customer'})}</h1>
+      <h2>{t('title',{ns:'customer'})}</h2>
 
       {customers.length !== 0 ? (
         customers.map((c, idx) => (

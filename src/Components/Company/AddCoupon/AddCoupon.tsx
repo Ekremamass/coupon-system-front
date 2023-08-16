@@ -15,14 +15,43 @@ function AddCoupon(): JSX.Element {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   const schema = z.object({
     title: z.string().min(5).max(50).optional(),
     category: z.string().nullable(),
     description: z.string().min(10).max(200).optional(),
     amount: z.number().min(0).optional(),
     price: z.number().min(0).optional(),
-    startDate: z.string().optional(),
-    endDate: z.string().optional(), 
+    startDate: z
+      .string()
+      .transform((dateString, ctx) => {
+        const date = new Date(dateString);
+        if (!z.date().safeParse(date).success) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.invalid_date,
+          });
+        }
+        return date;
+      })
+      .refine((startDate) => startDate >= today, {
+        message: "Start date must be after or equal to today's date",
+      }),
+    endDate: z
+      .string()
+      .transform((dateString, ctx) => {
+        const date = new Date(dateString);
+        if (!z.date().safeParse(date).success) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.invalid_date,
+          });
+        }
+        return date;
+      })
+      .refine((endDate) => endDate >= today, {
+        message: "End date must be after or equal to today's date",
+      }),
     image: z.string().url().optional(),
   });
 
@@ -49,6 +78,7 @@ function AddCoupon(): JSX.Element {
 
   return (
     <div className="AddCoupon">
+      <h2>{t("add", { ns: "coupon" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         {errors?.title ? (
           <span>{errors.title.message}</span>
@@ -125,7 +155,7 @@ function AddCoupon(): JSX.Element {
         <input
           {...register("startDate")}
           name="startDate"
-          type="datetime-local"
+          type="date"
           placeholder={t("startDate", { ns: "coupon" })}
         />
 
@@ -137,16 +167,14 @@ function AddCoupon(): JSX.Element {
         <input
           {...register("endDate")}
           name="endDate"
-          type="datetime-local"
+          type="date"
           placeholder={t("endDate", { ns: "coupon" })}
         />
 
         {errors?.image ? (
           <span>{errors.image.message}</span>
         ) : (
-          <label htmlFor="image">
-            {t("image", { ns: "coupon" })}
-          </label>
+          <label htmlFor="image">{t("image", { ns: "coupon" })}</label>
         )}
         <input
           {...register("image")}
