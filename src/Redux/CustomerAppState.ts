@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CustomerModel } from "../Models/Customer";
-import webApiService from "../Services/WebApiService";
-import notifyService from "../Services/NotificationService";
-import { useEffect } from "react";
 
 interface CustomerState {
   customers: CustomerModel[];
