@@ -156,7 +156,7 @@ function CouponList(): JSX.Element {
         </button>
       </form>
       <br />
-      <button onClick={fetchData}>{t("clear", { ns: "coupon" })}</button>
+      <button type="button" onClick={fetchData}>{t("clear", { ns: "coupon" })}</button>
       <br />
       {coupons.length !== 0 ? (
         coupons.map((c, idx) => (

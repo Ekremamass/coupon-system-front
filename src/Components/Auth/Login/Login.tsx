@@ -74,7 +74,7 @@ function Login(): JSX.Element {
             type={passwordShown ? "text" : "password"}
             placeholder={t("password", { ns: "login" })}
           />
-          <button onClick={togglePassword}>{t("show", { ns: "login" })}</button>
+          <button type="button" onClick={togglePassword}>{t("show", { ns: "login" })}</button>
         </div>
 
         {errors?.clientType ? (

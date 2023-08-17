@@ -31,7 +31,7 @@ function CustomerCouponsList(): JSX.Element {
     webApiService
       .getCustomerCoupons()
       .then((res) => {
-        notifyService.success(t("got_coupons", { ns: "messages" }));
+        notifyService.success(t("got_purchased", { ns: "messages" }));
         setCoupons(res.data);
         dispatch(gotAllCouponsAction(res.data));
       })
@@ -156,7 +156,7 @@ function CustomerCouponsList(): JSX.Element {
         </button>
       </form>
       <br />
-      <button onClick={fetchData}>{t("clear", { ns: "coupon" })}</button>
+      <button type="button" onClick={fetchData}>{t("clear", { ns: "coupon" })}</button>
       <br />
       {coupons.length !== 0 ? (
         coupons.map((c, idx) => (
