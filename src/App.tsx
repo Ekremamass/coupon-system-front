@@ -17,7 +17,11 @@ function App() {
   return (
     <div className={`App ${theme}`}>
       <button className="no-bg-button" onClick={changeTheme}>
-        {theme === "light-mode" ? <span className="big-emoji">🌝</span> : <span className="big-emoji">🌚</span>}
+        {theme === "light-mode" ? (
+          <span className="big-emoji">🌝</span>
+        ) : (
+          <span className="big-emoji">🌚</span>
+        )}
       </button>
       <Header />
       <Menu />
