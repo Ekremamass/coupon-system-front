@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import webApiService from "../../../Services/WebApiService";
 import notifyService from "../../../Services/NotificationService";
 import { CustomerModel } from "../../../Models/Customer";
-import CompanyCard from "../../Cards/CompanyCard/CompanyCard";
 import CustomerCard from "../../Cards/CustomerCard/CustomerCard";
 
 function CustomerDetails(): JSX.Element {
