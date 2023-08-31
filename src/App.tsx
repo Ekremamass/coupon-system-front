@@ -16,14 +16,16 @@ function App() {
 
   return (
     <div className={`App ${theme}`}>
-      <button className="no-bg-button" onClick={changeTheme}>
-        {theme === "light-mode" ? (
-          <span className="big-emoji">🌝</span>
-        ) : (
-          <span className="big-emoji">🌚</span>
-        )}
-      </button>
       <Header />
+      <div className="theme-button">
+        <button className="no-bg-button " onClick={changeTheme}>
+          {theme === "light-mode" ? (
+            <span className="big-emoji">🌝</span>
+          ) : (
+            <span className="big-emoji">🌚</span>
+          )}
+        </button>
+      </div>
       <Menu />
       <Main />
       <Footer />

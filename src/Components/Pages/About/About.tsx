@@ -3,20 +3,34 @@ import "./About.css";
 function About(): JSX.Element {
     return (
         <div className="About">
-			<p>Oh, brave lords and ladies, let me enchant thee with the tale of a wondrous creation - a realm of savings and mirth - the noble "Coupon System. <br />
-                Hark, ye who seeketh bargains and treasure, for in this digital realm, thou shall findeth a magical collection of coupons, bestowed upon thee by benevolent merchants and artisans alike.<br />
-
-With a mere wave of thy hand, thou canst summon these enchantments, and the riches of discounts shall unfold before thee like a majestic tapestry of frugality.<br />
-
-Be it garments of silken threads, or feasts fit for kings, the Coupon System shalt grant thee thy heart's desire, all at a fraction of the price.<br />
-
-In this fair kingdom, the savvy shopper reigns supreme, wielding the power of knowledge and cunning to uncover the most splendid deals in the land.<br />
-
-But heed my words, noble folk, for like all enchanted realms, the magic of coupons is fleeting. Their essence doth vanish with the sands of time, and thus, swift action is required to claim their blessings.<br />
-
-So, wanderers of this realm, unite under the banner of the Coupon System, and embark on a journey of savings and delight. Rejoice, for thou shalt never again pay full price!<br />
-
-With mirth and glee, let us embrace this marvel that doth bringeth joy to the thrifty souls of this realm. Fare thee well, and may thy wallets overflow with the bounty of the Coupon System!</p>
+			<h1 className="about-header">About Us</h1>
+      <p className="about-text">
+        Welcome to the hilarious realm of UnCouponventional Chronicles! 🎉 We're the wild minds behind the wildest coupons website you've ever stumbled upon.
+      </p>
+      <p className="about-text">
+        We're not just about discounts – we're about dancing hamsters, coupon-clipping ninjas, and making your wallet and funny bone equally happy!
+      </p>
+      <h2 className="section-header">Our Story</h2>
+      <p className="about-text">
+        It all began when a group of coupon enthusiasts realized that saving money could be a laugh-out-loud adventure. Armed with a keyboard and a knack for puns, we embarked on a mission to turn every discount code into a punchline.
+      </p>
+      <p className="about-text">
+        Our journey led us to the creation of UnCouponventional Chronicles – where the deals are hot, the laughter is contagious, and the savings are as real as that awkward dance you do when you snag an amazing deal.
+      </p>
+      <h2 className="section-header">Meet the Team</h2>
+      <p className="about-text">
+        Our team is a mix of coupon experts, stand-up comedians, and professional meme-makers. With a collective goal of bringing a smile to your face, we're here to prove that saving money and having a good time aren't mutually exclusive.
+      </p>
+      <p className="about-text">
+        Whether you're into witty one-liners or puns that'll make you groan, we've got something for everyone. Our top-secret weapon? The power of laughter in the face of full-priced chaos!
+      </p>
+      <h2 className="section-header">Join the Laughter</h2>
+      <p className="about-text">
+        We invite you to dive into the world of UnCouponventional Chronicles. Whether you're hunting for jaw-dropping discounts, a dose of humor, or just a momentary escape from reality, we've got you covered.
+      </p>
+      <p className="about-text">
+        Thanks for stopping by – and remember, if life gives you lemons, turn them into discounted lemonade with a sprinkle of laughter!
+      </p>
         </div>
     );
 }

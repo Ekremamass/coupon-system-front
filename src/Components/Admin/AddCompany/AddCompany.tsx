@@ -43,7 +43,7 @@ function AddCompany(): JSX.Element {
   };
 
   return (
-    <div className="AddCompany">
+    <div className="AddCompany form-look-and-feel">
       <h2>{t("add", { ns: "company" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         {errors?.name ? (

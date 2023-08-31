@@ -53,7 +53,7 @@ function UpdateCompany(): JSX.Element {
   };
 
   return (
-    <div className="UpdateCompany">
+    <div className="UpdateCompany form-look-and-feel">
       <h2>{t("edit", { ns: "company" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="id">Id</label>

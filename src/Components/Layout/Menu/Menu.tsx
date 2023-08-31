@@ -23,7 +23,7 @@ function Menu(): JSX.Element {
       ) : user && user.clientType === ClientType.CUSTOMER ? (
         <CustomerMenu />
       ) : (
-        <div>{t('login')}</div>
+      <p>{t('login')}</p>
       )}
     </div>
   );

@@ -92,6 +92,8 @@ function CouponList(): JSX.Element {
   return (
     <div className="CouponList">
       <h2>{t("list", { ns: "coupon" })}</h2>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
       <div className="buttons">
         <button
           type="button"
@@ -107,10 +109,7 @@ function CouponList(): JSX.Element {
         >
           {t("enter_max", { ns: "coupon" })}
         </button>
-      </div>
-      
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+
           {activeForm === "category" ? (
             <>
               {errors?.category ? (
@@ -149,11 +148,11 @@ function CouponList(): JSX.Element {
               />
             </>
           ) : null}
-        </div>
-
+          
         <button type="submit" disabled={!isValid || isSubmitting}>
           {t("get", { ns: "coupon" })}
         </button>
+        </div>
       </form>
       <br />
       <button type="button" onClick={fetchData}>{t("clear", { ns: "coupon" })}</button>

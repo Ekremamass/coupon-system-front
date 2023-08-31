@@ -77,7 +77,7 @@ function AddCoupon(): JSX.Element {
   };
 
   return (
-    <div className="AddCoupon">
+    <div className="AddCoupon form-look-and-feel">
       <h2>{t("add", { ns: "coupon" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         {errors?.title ? (

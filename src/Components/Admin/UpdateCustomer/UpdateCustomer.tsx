@@ -56,7 +56,7 @@ function UpdateCustomer(): JSX.Element {
   };
 
   return (
-    <div className="UpdateCustomer">
+    <div className="UpdateCustomer form-look-and-feel">
       <h2>{t("edit", { ns: "customer" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="id">Id</label>

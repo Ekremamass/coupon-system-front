@@ -13,15 +13,13 @@ function AuthMenu(): JSX.Element {
                 (user.token)
                     ?
                     <>
-                        <p>connected as {user.email} <Link to="logout">{t('logout', { ns: 'login' })}</Link></p>
+                        <p>connected as {user.email} <Link to="logout"><button>{t('logout', { ns: 'login' })}</button></Link></p>
                     </>
                     :
                     <>
-                        <p>{t('hello', { ns: 'login' })}&nbsp;&nbsp;&nbsp;
-                            <Link to="register">{t('register', { ns: 'login' })}</Link>
+                            <Link to="register"><button>{t('register', { ns: 'login' })}</button></Link>
                             &nbsp;&nbsp;&nbsp;
-                            <Link to="login">{t('login', { ns: 'login' })}</Link>
-                        </p>
+                            <Link to="login"><button>{t('login', { ns: 'login' })}</button></Link>
                     </>
             }
         </div>

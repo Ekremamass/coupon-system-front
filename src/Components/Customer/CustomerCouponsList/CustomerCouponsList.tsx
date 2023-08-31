@@ -93,13 +93,28 @@ function CustomerCouponsList(): JSX.Element {
     <div className="CustomerCouponsList">
       <h2>{t("purchased", { ns: "customer" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+      <div className="buttons">
+          <button
+            type="button"
+            onClick={() => setActiveForm("category")}
+            disabled={activeForm === "category"}
+          >
+            {t("choose_cat", { ns: "coupon" })}
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveForm("max")}
+            disabled={activeForm === "max"}
+          >
+            {t("enter_max", { ns: "coupon" })}
+          </button>
+
           {activeForm === "category" ? (
             <>
               {errors?.category ? (
                 <span>{errors.category.message}</span>
               ) : (
-                <label htmlFor="category">Category</label>
+                <label htmlFor="category">{t("category", { ns: "coupon" })} </label>
               )}
               <select
                 {...register("category")}
@@ -120,7 +135,7 @@ function CustomerCouponsList(): JSX.Element {
               {errors?.max ? (
                 <span>{errors.max.message}</span>
               ) : (
-                <label htmlFor="max">{t("max", { ns: "coupon" })}</label>
+                <label htmlFor="max">{t("max", { ns: "coupon" })} </label>
               )}
               <input
                 {...register("max", { valueAsNumber: true })}
@@ -132,28 +147,10 @@ function CustomerCouponsList(): JSX.Element {
               />
             </>
           ) : null}
-        </div>
-
-        <div className="buttons">
-          <button
-            type="button"
-            onClick={() => setActiveForm("category")}
-            disabled={activeForm === "category"}
-          >
-            {t("choose_cat", { ns: "coupon" })}
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveForm("max")}
-            disabled={activeForm === "max"}
-          >
-            {t("enter_max", { ns: "coupon" })}
-          </button>
-        </div>
-
-        <button type="submit" disabled={!isValid || isSubmitting}>
+          <button type="submit" disabled={!isValid || isSubmitting}>
           {t("get", { ns: "coupon" })}
         </button>
+        </div>
       </form>
       <br />
       <button type="button" onClick={fetchData}>{t("clear", { ns: "coupon" })}</button>

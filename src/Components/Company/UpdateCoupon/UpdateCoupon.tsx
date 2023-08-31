@@ -88,7 +88,7 @@ function UpdateCoupon(): JSX.Element {
   };
 
   return (
-    <div className="UpdateCoupon">
+    <div className="UpdateCoupon form-look-and-feel">
       <h2>{t("edit", { ns: "coupon" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="id">{t("id")}</label>

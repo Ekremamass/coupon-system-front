@@ -8,9 +8,14 @@
 }
 
 
+.App>.theme-button {
+    grid-column: 1 span;
+    grid-row: 1 span;
+    background-color: var(--header-color);
+}
 
 .App>.Header {
-    grid-column: 12 span;
+    grid-column: 11 span;
     grid-row: 1 span;
 }
 

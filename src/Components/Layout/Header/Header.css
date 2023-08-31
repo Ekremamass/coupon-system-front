@@ -1,7 +1,8 @@
 .Header {
+    background-color: var(--header-color);
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -9,3 +10,16 @@
     font-size: 40px;
 }
 
+.Header > h1{
+    margin-left: 200px !important;
+}
+
+.Header > .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header > .info *{
+    margin: 5px;

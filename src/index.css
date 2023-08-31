@@ -10,6 +10,13 @@ body,
     margin: 0px;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
 /* * {
     border: 1px solid black;
 } */
@@ -26,28 +33,31 @@ body,
     /* Text color for your theme */
     --background-color: #ffffff;
     /* Background color for your theme */
+    --header-color:#F6F4EB;
 }
 
 .light-mode {
-    --primary-color: #1976d2;
+    --primary-color: #4682A9;
     /* Primary color for your theme */
-    --secondary-color: #2196f3;
+    --secondary-color: #749BC2;
     /* Secondary color for your theme */
-    --tertiary-color: #90caf9;
+    --tertiary-color: #91C8E4;
     /* Tertiary color for your theme */
     --text-color: #000000;
     /* Text color for your theme */
     --background-color: #ffffff;
     /* Background color for your theme*/
+    --header-color:#F6F4EB;
 }
 
 /* Dark Theme */
 .dark-mode {
-    --primary-color: #1e88e5;
-    --secondary-color: #1565c0;
-    --tertiary-color: #0d47a1;
+    --primary-color: #176B87;
+    --secondary-color: #64CCC5;
+    --tertiary-color: #DAFFFB;
     --text-color: #ffffff;
     --background-color: #424242;
+    --header-color: #001C30;
 }
 
 body {
@@ -73,10 +83,6 @@ body {
 .transparent-bg {
     background-color: transparent;
 }
-
-/* .transparent-bg:hover{
-    background-color: transparent;
-} */
 
 .big-emoji {
     font-size: 30px;
@@ -120,7 +126,7 @@ button:disabled {
     justify-content: flex-start;
     align-items: start;
     background-color: var(--primary-color);
-    padding: 20px;
+    padding: 1.2em;
     border-radius: 10px;
     color: var(--text-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -129,8 +135,12 @@ button:disabled {
     height: 250px;
 }
 
+.card p{
+    margin: 10px;
+}
+
 .card>h3 {
-    color: var(--text-color);
+    color: var(--tertiary-color);
 }
 
 img {
@@ -198,14 +208,13 @@ a:hover {
 }
 
 .row {
-    padding-top: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .row>* {
-    margin: 5px;
+    margin-right: 5px;
 }
 
 .danger {
@@ -223,6 +232,7 @@ a:hover {
     border: none;
     cursor: pointer;
     outline: none;
+    margin: 1.3em;
 }
 
 .no-bg-button:hover {

@@ -20,7 +20,8 @@ function CouponCard(props: CouponCardProps): JSX.Element {
   const isPurchase = location.pathname == "/customer/all";
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const notPurchasable = (props.coupon.amount === 0) || (props.coupon.endDate < today );
+  const notPurchasable =
+    props.coupon.amount === 0 || props.coupon.endDate < today;
   console.log(props.coupon.endDate);
   console.log(today);
 
@@ -82,9 +83,11 @@ function CouponCard(props: CouponCardProps): JSX.Element {
         </div>
       )}
 
-      {isCustomer && isPurchase &&(
+      {isCustomer && isPurchase && (
         <Link to={`/customer/purchase/${props.coupon.id}`}>
-          <button disabled={notPurchasable}>🤑 {t("purchase", { ns: "customer" })}</button>
+          <button disabled={notPurchasable}>
+            🤑 {t("purchase", { ns: "customer" })}
+          </button>
         </Link>
       )}
     </div>

@@ -42,7 +42,7 @@ function GetCustomer(): JSX.Element {
   };
 
   return (
-    <div className="GetCustomer">
+    <div className="GetCustomer form-look-and-feel">
       <form onSubmit={handleSubmit(onSubmit)}>
         {errors?.id ? (
           <span>{errors.id.message}</span>

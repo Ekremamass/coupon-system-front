@@ -43,7 +43,7 @@ function AddCustomer(): JSX.Element {
   };
 
   return (
-    <div className="AddCustomer">
+    <div className="AddCustomer form-look-and-feel">
       <h2>{t('add', { ns: 'customer' })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         {errors?.firstName ? (

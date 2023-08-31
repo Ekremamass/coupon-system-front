@@ -40,7 +40,7 @@ function GetCompany(): JSX.Element {
   }
 
   return (
-    <div className="GetCompany">
+    <div className="GetCompany form-look-and-feel">
       <form onSubmit={handleSubmit(onSubmit)}>
         {errors?.id ? (
           <span>{errors.id.message}</span>
