@@ -20,13 +20,13 @@
 }
 
 .App>.Menu {
-    grid-column: 2 span;
+    grid-column: 1 span;
     grid-row: 10 span;
 }
 
 .App>.Main {
     margin: 40px;
-    grid-column: 10 span;
+    grid-column: 11 span;
     grid-row: 10 span;
 }
 

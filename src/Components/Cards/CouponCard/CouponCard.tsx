@@ -38,10 +38,6 @@ function CouponCard(props: CouponCardProps): JSX.Element {
         />
       </div>
       <p>
-        📙&nbsp;{t("description", { ns: "coupon" })} :{" "}
-        {props.coupon.description}
-      </p>
-      <p>
         🏢&nbsp;{t("company", { ns: "coupon" })} : {props.coupon.company.name}
       </p>
       <p>
@@ -62,14 +58,19 @@ function CouponCard(props: CouponCardProps): JSX.Element {
       <p>
         💲&nbsp;{t("price", { ns: "coupon" })} : {props.coupon.price}&#8362;
       </p>
-      <p>
-        📅&nbsp;{t("startDate", { ns: "coupon" })} :{" "}
-        {moment(props.coupon.startDate).format("DD/MM/YY")}
-      </p>
-      <p>
-        📅&nbsp;{t("endDate", { ns: "coupon" })} :{" "}
-        {moment(props.coupon.endDate).format("DD/MM/YY")}
-      </p>
+      <div className="detailsContainer">
+        <p>
+          📙&nbsp;{t("description", { ns: "coupon" })} :{" "}
+          {props.coupon.description}
+        </p>
+        <p>
+          📅&nbsp;{t("startDate", { ns: "coupon" })} :{" "}
+          {moment(props.coupon.startDate).format("DD/MM/YY")}
+        </p>
+        <p>
+          📅&nbsp;{t("endDate", { ns: "coupon" })} :{" "}
+          {moment(props.coupon.endDate).format("DD/MM/YY")}
+        </p>
 
       {isCompany && (
         <div className="row ">
@@ -90,6 +91,7 @@ function CouponCard(props: CouponCardProps): JSX.Element {
           </button>
         </Link>
       )}
+      </div>
     </div>
   );
 }

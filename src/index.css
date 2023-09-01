@@ -89,9 +89,12 @@ body {
 }
 
 form {
+    padding: 10px;
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
+    border-radius: 2%;
+    border: 1px solid var(--tertiary-color);
 }
 
 form>* {

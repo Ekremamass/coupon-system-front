@@ -10,7 +10,7 @@ function EmptyView(props: EmptyViewProps): JSX.Element {
         <div className="EmptyView">
             <h2>{props.title}</h2>
             <p>{props.description}</p>
-            <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="bla bla"/>
+            <img src="https://media.giphy.com/media/OmK8lulOMQ9XO/giphy.gif" alt="bla bla"/>
         </div>
     );
 }
