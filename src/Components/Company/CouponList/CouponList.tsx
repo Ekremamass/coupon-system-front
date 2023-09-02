@@ -157,16 +157,18 @@ function CouponList(): JSX.Element {
       <br />
       <button type="button" onClick={fetchData}>{t("clear", { ns: "coupon" })}</button>
       <br />
-      {coupons.length !== 0 ? (
-        coupons.map((c, idx) => (
-          <CouponCard key={`coupon-card-${idx}`} coupon={c} />
-        ))
-      ) : (
-        <EmptyView
-          title={t("empty")}
-          description={t("empty", { ns: "coupon" })}
-        />
-      )}
+      <div className="coupon-card-container">
+        {coupons.length !== 0 ? (
+          coupons.map((c, idx) => (
+            <CouponCard key={`coupon-card-${idx}`} coupon={c} />
+          ))
+        ) : (
+          <EmptyView
+            title={t("empty")}
+            description={t("empty", { ns: "coupon" })}
+          />
+        )}
+      </div>
     </div>
   );
 }

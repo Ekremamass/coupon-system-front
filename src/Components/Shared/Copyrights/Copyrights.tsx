@@ -1,10 +1,12 @@
+import { useTranslation } from "react-i18next";
 import "./Copyrights.css";
 
 function Copyrights(): JSX.Element {
   const year = new Date().getFullYear();
+  const {t} = useTranslation();
   return (
     <div className="Copyrights">
-      <p>All rights reserved to &copy; Ekrema Massarwe {year}</p>
+      <p>{t("copyrights")} &copy; {t("name")} {year}</p>
     </div>
   );
 }

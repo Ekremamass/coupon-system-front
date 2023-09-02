@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import "./FollowUs.css";
 import {
   AiFillGithub,
@@ -6,10 +7,11 @@ import {
 } from "react-icons/ai";
 
 function FollowUs(): JSX.Element {
+  const {t} = useTranslation();
   return (
     <div className="FollowUs">
       <div>
-        <h3>Follow Us</h3>
+        <h3>{t("follow")}</h3>
       </div>
       <div className="row">
         <a href="https://www.linkedin.com/in/ekrema-massarwe-589693250/">

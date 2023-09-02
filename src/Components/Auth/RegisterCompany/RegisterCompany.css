@@ -1,3 +1,7 @@
 .RegisterCompany {
 	
 }
+
+.RegisterCompany > form{
+    border: none;
+}

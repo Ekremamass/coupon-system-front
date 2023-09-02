@@ -1,3 +1,6 @@
 .RegisterCustomer {
 	
 }
+.RegisterCustomer > form{
+    border: none;
+}

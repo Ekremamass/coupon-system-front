@@ -1,49 +1,61 @@
 .CouponCard {
   margin: 0;
   padding: 0;
-	height: 300px !important;
-	position: relative; /* Allow child elements to be positioned relative to this container */
-	overflow: hidden;   /* Hide overflowing content */
+  height: 300px !important;
+  position: relative;
+  /* Allow child elements to be positioned relative to this container */
+  overflow: hidden;
+  /* Hide overflowing content */
 }
 
 .title-and-image {
-    display: flex;
-    align-items: center; /* Align items vertically */
-  }
-  
-  .title {
-    flex: 1;
-    color: var(--text-color); /* Allow the title to take up remaining space */
-  }
-  
-  .CouponImage {
-    width: 5em; /* Adjust the width as needed */
-    height: 5em; /* Adjust the height as needed */
-    object-fit: cover;
-    margin-left: 1em; 
-    margin-right: 1em;
-    border-radius: 50%;
-    border: 2px solid gray;
-  }
+  display: flex;
+  align-items: center;
+  /* Align items vertically */
+}
 
-  .CouponCard label{
-    color: var(--primary-color) !important; 
-  }
+.title {
+  flex: 1;
+  color: var(--text-color);
+  /* Allow the title to take up remaining space */
+}
 
-  .detailsContainer {
-    left: 0;
-    position: absolute;       /* Position the container above the other content */
-    bottom: -250px;           /* Initially hide it beneath the card */
-    width: 100%;              /* Take up full width of the parent */
-    height: 250px;            /* Set a fixed height for the details container */
-    background-color: var(--header-color);  /* Slightly transparent white background */
-    transition: bottom 0.3s ease;   /* Add smooth transition */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.CouponImage {
+  width: 5em;
+  /* Adjust the width as needed */
+  height: 5em;
+  /* Adjust the height as needed */
+  object-fit: cover;
+  margin-left: 1em;
+  margin-right: 1em;
+  border-radius: 50%;
+  border: 2px solid gray;
+}
 
-  .CouponCard:hover .detailsContainer {
-    bottom: 0;   /* On hover, slide the details container up */
-  }
+.CouponCard label {
+  color: var(--primary-color) !important;
+}
+
+.detailsContainer {
+  left: 0;
+  position: absolute;
+  /* Position the container above the other content */
+  bottom: -250px;
+  /* Initially hide it beneath the card */
+  width: 100%;
+  /* Take up full width of the parent */
+  height: 250px;
+  /* Set a fixed height for the details container */
+  background-color: var(--header-color);
+  transition: bottom 0.6s ease;
+  /* Add smooth transition */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.CouponCard:hover .detailsContainer {
+  bottom: 0;
+  /* On hover, slide the details container up */
+}

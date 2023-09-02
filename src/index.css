@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Hebrew:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 @import "react-toastify/dist/ReactToastify.css";
 
 html,
@@ -10,7 +12,7 @@ body,
     margin: 0px;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -33,7 +35,7 @@ body,
     /* Text color for your theme */
     --background-color: #ffffff;
     /* Background color for your theme */
-    --header-color:#F6F4EB;
+    --header-color: #F6F4EB;
 }
 
 .light-mode {
@@ -47,7 +49,7 @@ body,
     /* Text color for your theme */
     --background-color: #ffffff;
     /* Background color for your theme*/
-    --header-color:#F6F4EB;
+    --header-color: #F6F4EB;
 }
 
 /* Dark Theme */
@@ -63,8 +65,21 @@ body,
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: Open Sans;
+    font-family: 'Open Sans', sans-serif;
 }
+
+.i18n-en body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.i18n-ar body {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.i18n-he body {
+    font-family: 'Noto Sans Hebrew', sans-serif;
+}
+
 
 .box {
     padding: 15px;
@@ -93,8 +108,6 @@ form {
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
-    border-radius: 2%;
-    border: 1px solid var(--tertiary-color);
 }
 
 form>* {
@@ -138,7 +151,7 @@ button:disabled {
     height: 250px;
 }
 
-.card p{
+.card p {
     margin: 10px;
 }
 
@@ -236,6 +249,21 @@ a:hover {
     cursor: pointer;
     outline: none;
     margin: 1.3em;
+}
+
+select {
+    appearance: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 16px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .no-bg-button:hover {
