@@ -181,6 +181,10 @@ class WebApiService {
     return axios.post(`${urlService.customer}/purchase/${id}`,null, { headers });
   }
 
+  public getLatestCoupons(): Promise<AxiosResponse<CouponModel[]>> {
+    return axios.get<CouponModel[]>(urlService.customer + "/latest");
+  }
+
 }
 
 const webApiService = new WebApiService();

@@ -41,6 +41,7 @@ function Login(): JSX.Element {
       .login(data)
       .then((res) => {
         dispatch(userLoggedIn(res.data));
+        notifyService.success(t("logged_in", { ns: "login" }));
         navigate("/home");
       })
       .catch((err) => {

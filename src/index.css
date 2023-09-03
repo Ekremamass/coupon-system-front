@@ -68,17 +68,24 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.en{
+.en,
+.en button .en select {
     font-family: 'Open Sans', sans-serif !important;
 }
 
-.ar{
+.ar,
+.ar button,
+.ar select {
     font-family: 'Noto Sans Arabic', sans-serif !important;
 }
 
-.he{
+.he,
+.he button,
+.he select {
     font-family: 'Noto Sans Hebrew', sans-serif !important;
 }
+
+
 
 .box {
     padding: 15px;
@@ -125,6 +132,7 @@ button {
     background-color: var(--secondary-color);
     color: var(--text-color);
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -132,6 +140,7 @@ button:hover {
 }
 
 button:disabled {
+    background-color: #ccc;
     cursor: not-allowed;
 }
 

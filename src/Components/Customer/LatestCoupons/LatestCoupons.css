@@ -1,0 +1,34 @@
+.LatestCoupons {}
+
+.title-coupon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.coupon-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.coupon-slide-enter {
+    transform: translateX(100%);
+}
+
+.coupon-slide-enter-active {
+    transform: translateX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.coupon-slide-exit {
+    transform: translateX(0);
+}
+
+.coupon-slide-exit-active {
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+}
