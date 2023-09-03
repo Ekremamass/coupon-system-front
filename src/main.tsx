@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Provider store={store}>
       <Suspense fallback="loading">
-        <App />
+          <App />
       </Suspense>
     </Provider>
   </BrowserRouter>

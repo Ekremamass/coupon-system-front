@@ -1,9 +1,11 @@
+import Login from "../../Auth/Login/Login";
 import "./Home.css";
 
 function Home(): JSX.Element {
     return (
         <div className="Home">
-			<p>Welcome, welcome, dear wanderers, to the mirthful abode of the Coupon Kingdom! 🏰<br />
+          <Login/>
+			{/* <p>Welcome, welcome, dear wanderers, to the mirthful abode of the Coupon Kingdom! 🏰<br />
 
 Behold, a realm where pennies dance and laughter reigns supreme! 🤣<br />
 
@@ -21,7 +23,7 @@ But beware, for the clock doth tick in jest, and the deals, like a fleeting rain
 
 So seize the moment, seize the mirth, and embrace the merriment of the Coupon Kingdom! Let's embark on this joyous journey of savings, for why payeth full price when thou canst revel in the delight of a delightful discount? 🎉<br />
 
-Join hands with fellow jesters and explorers, and together, let us dance the dance of frugality, and make merry in this land of the Coupon System! 🎭</p>
+Join hands with fellow jesters and explorers, and together, let us dance the dance of frugality, and make merry in this land of the Coupon System! 🎭</p> */}
         </div>
     );
 }

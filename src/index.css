@@ -68,18 +68,17 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.i18n-en body {
-    font-family: 'Open Sans', sans-serif;
+.en{
+    font-family: 'Open Sans', sans-serif !important;
 }
 
-.i18n-ar body {
-    font-family: 'Noto Sans Arabic', sans-serif;
+.ar{
+    font-family: 'Noto Sans Arabic', sans-serif !important;
 }
 
-.i18n-he body {
-    font-family: 'Noto Sans Hebrew', sans-serif;
+.he{
+    font-family: 'Noto Sans Hebrew', sans-serif !important;
 }
-
 
 .box {
     padding: 15px;
