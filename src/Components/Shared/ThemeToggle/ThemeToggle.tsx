@@ -12,7 +12,7 @@ function ThemeToggle(): JSX.Element {
   const dispatch = useDispatch();
   const changeTheme = () => {
     setTheme(theme === "light-mode" ? "dark-mode" : "light-mode");
-    dispatch(updatedThemeAction);
+    dispatch(updatedThemeAction());
   };
 
   return (

@@ -12,9 +12,7 @@ function App() {
   const { i18n } = useTranslation();
 
   const theme = useSelector((state: RootState)=>state.themeReducer.theme);
-
   
-
   return (
     <div className={`App ${theme} ${i18n.language}`}>
       <Header />

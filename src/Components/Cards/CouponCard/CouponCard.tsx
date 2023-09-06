@@ -22,9 +22,7 @@ function CouponCard(props: CouponCardProps): JSX.Element {
   today.setHours(0, 0, 0, 0);
   const notPurchasable =
     props.coupon.amount === 0 || props.coupon.endDate < today;
-  console.log(props.coupon.endDate);
-  console.log(today);
-
+    
   return (
     <div className="CouponCard card">
       <div className="title-and-image">
