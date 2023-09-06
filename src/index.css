@@ -19,6 +19,8 @@ body,
     scroll-behavior: smooth;
 }
 
+
+
 /* * {
     border: 1px solid black;
 } */
@@ -39,27 +41,27 @@ body,
 }
 
 .light-mode {
-    --primary-color: #4682A9;
+    --primary-color: #7C73C0;
     /* Primary color for your theme */
-    --secondary-color: #749BC2;
+    --secondary-color: #94ADD7;
     /* Secondary color for your theme */
-    --tertiary-color: #91C8E4;
+    --tertiary-color: #E8FFCE;
     /* Tertiary color for your theme */
     --text-color: #000000;
     /* Text color for your theme */
     --background-color: #ffffff;
     /* Background color for your theme*/
-    --header-color: #F6F4EB;
+    --header-color: #ACFADF;
 }
 
 /* Dark Theme */
 .dark-mode {
-    --primary-color: #176B87;
-    --secondary-color: #64CCC5;
-    --tertiary-color: #DAFFFB;
+    --primary-color: #93B1A6;
+    --secondary-color: #183D3D;
+    --tertiary-color: #5C8374;
     --text-color: #ffffff;
     --background-color: #424242;
-    --header-color: #001C30;
+    --header-color: #040D12;
 }
 
 body {
@@ -68,24 +70,23 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.en,
-.en button .en select {
-    font-family: 'Open Sans', sans-serif !important;
+input,
+select,
+button {
+    font: inherit;
 }
 
-.ar,
-.ar button,
-.ar select {
-    font-family: 'Noto Sans Arabic', sans-serif !important;
+.en {
+    font-family: 'Open Sans', sans-serif;
 }
 
-.he,
-.he button,
-.he select {
-    font-family: 'Noto Sans Hebrew', sans-serif !important;
+.ar {
+    font-family: 'Noto Sans Arabic', sans-serif;
 }
 
-
+.he {
+    font-family: 'Noto Sans Hebrew', sans-serif;
+}
 
 .box {
     padding: 15px;
@@ -256,7 +257,6 @@ a:hover {
     border: none;
     cursor: pointer;
     outline: none;
-    margin: 1.3em;
 }
 
 select {
@@ -274,6 +274,11 @@ select:focus {
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-.no-bg-button:hover {
-    background: none;
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Adjust the gap as needed */
+    margin-top: 20px;
+    /* Add some margin for spacing */
 }

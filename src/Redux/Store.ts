@@ -1,3 +1,4 @@
+import { themeReducer } from './ThemeAppState';
 import { couponsReducer } from './CouponAppState';
 import { customersReducer } from './CustomerAppState';
 import { companiesReducer } from './CompanyAppState';
@@ -10,6 +11,7 @@ const rootReducer = {
     companiesReducer: companiesReducer,
     customersReducer: customersReducer,
     couponsReducer: couponsReducer,
+    themeReducer: themeReducer,
 };
 
 

@@ -16,8 +16,13 @@ function CompanyList(): JSX.Element {
     store.getState().companiesReducer.companies
   );
   const dispatch = useDispatch();
+  const isLoaded = store.getState().companiesReducer.isLoaded;
 
   useEffect(() => {
+    if (isLoaded) {
+      return;
+    }
+
     webApiService
       .getAllCompanies()
       .then((res) => {
@@ -31,16 +36,18 @@ function CompanyList(): JSX.Element {
     <div className="CompanyList">
       <h2>{t("title", { ns: "company" })}</h2>
 
-      {companies.length !== 0 ? (
-        companies.map((c, idx) => (
-          <CompanyCard key={`company-card-${idx}`} company={c} />
-        ))
-      ) : (
-        <EmptyView
-          title={t("empty")}
-          description={t("empty", { ns: "company" })}
-        />
-      )}
+      <div className="card-container">
+        {companies.length !== 0 ? (
+          companies.map((c, idx) => (
+            <CompanyCard key={`company-card-${idx}`} company={c} />
+          ))
+        ) : (
+          <EmptyView
+            title={t("empty")}
+            description={t("empty", { ns: "company" })}
+          />
+        )}
+      </div>
     </div>
   );
 }

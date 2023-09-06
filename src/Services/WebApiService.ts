@@ -178,7 +178,7 @@ class WebApiService {
 
   public purchaseCoupon(id: number): Promise<AxiosResponse<void>> {
     const headers = { Authorization: store.getState().authReducer.user.token };
-    return axios.post(`${urlService.customer}/purchase/${id}`,null, { headers });
+    return axios.post(`${urlService.customer}/purchase/${id}`, null ,{ headers });
   }
 
   public getLatestCoupons(): Promise<AxiosResponse<CouponModel[]>> {

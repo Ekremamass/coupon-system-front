@@ -21,7 +21,6 @@ function CustomerCouponsList(): JSX.Element {
   );
   const [inputValue, setInputValue] = useState("");
 
-
   const clearInput = () => {
     setInputValue("");
   };
@@ -93,7 +92,7 @@ function CustomerCouponsList(): JSX.Element {
     <div className="CustomerCouponsList">
       <h2>{t("purchased", { ns: "customer" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="buttons">
+        <div className="buttons">
           <button
             type="button"
             onClick={() => setActiveForm("category")}
@@ -114,7 +113,9 @@ function CustomerCouponsList(): JSX.Element {
               {errors?.category ? (
                 <span>{errors.category.message}</span>
               ) : (
-                <label htmlFor="category">{t("category", { ns: "coupon" })} </label>
+                <label htmlFor="category">
+                  {t("category", { ns: "coupon" })}{" "}
+                </label>
               )}
               <select
                 {...register("category")}
@@ -148,23 +149,27 @@ function CustomerCouponsList(): JSX.Element {
             </>
           ) : null}
           <button type="submit" disabled={!isValid || isSubmitting}>
-          {t("get", { ns: "coupon" })}
-        </button>
+            {t("get", { ns: "coupon" })}
+          </button>
         </div>
       </form>
       <br />
-      <button type="button" onClick={fetchData}>{t("clear", { ns: "coupon" })}</button>
+      <button type="button" onClick={fetchData}>
+        {t("clear", { ns: "coupon" })}
+      </button>
       <br />
-      {coupons.length !== 0 ? (
-        coupons.map((c, idx) => (
-          <CouponCard key={`coupon-card-${idx}`} coupon={c} />
-        ))
-      ) : (
-        <EmptyView
-          title={t("empty")}
-          description={t("empty", { ns: "coupon" })}
-        />
-      )}
+      <div className="card-container">
+        {coupons.length !== 0 ? (
+          coupons.map((c, idx) => (
+            <CouponCard key={`coupon-card-${idx}`} coupon={c} />
+          ))
+        ) : (
+          <EmptyView
+            title={t("empty")}
+            description={t("empty", { ns: "coupon" })}
+          />
+        )}
+      </div>
     </div>
   );
 }

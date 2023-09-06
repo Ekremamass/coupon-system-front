@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CouponModel } from "../Models/Coupon";
 
 interface CouponState {
-  coupons: CouponModel[];
+  coupons: CouponModel[],
+  isLoaded: boolean;
 }
 
 const initialState: CouponState = {
   coupons: [],
+  isLoaded: false,
 };
 
 export enum ActionType {
@@ -24,6 +26,7 @@ const couponsSlice = createSlice({
     reducers: {
       gotAllCouponsAction(state, action: PayloadAction<CouponModel[]>) {
         state.coupons = action.payload;
+        state.isLoaded = true;
       },
       addedCouponAction(state, action: PayloadAction<CouponModel>) {
         state.coupons.push(action.payload);

@@ -117,7 +117,7 @@ function RegisterCustomer(): JSX.Element {
             type={passwordShown ? "text" : "password"}
             placeholder={t("password", { ns: "login" })}
           />
-          <button type="button" onClick={togglePassword}>{t("show", { ns: "login" })}</button>
+          <button type="button" onClick={togglePassword}>{!passwordShown ? t("show", { ns: "login" }):  t("hide", { ns: "login" })}</button>
         </div>
 
         {errors?.confirm ? (
@@ -132,7 +132,7 @@ function RegisterCustomer(): JSX.Element {
             type={confirmShown ? "text" : "password"}
             placeholder={t("confirm", { ns: "login" })}
           />
-          <button type="button" onClick={toggleConfirm}>{t("show", { ns: "login" })}</button>
+          <button type="button" onClick={toggleConfirm}>{!confirmShown ? t("show", { ns: "login" }):  t("hide", { ns: "login" })}</button>
         </div>
         <button disabled={!isValid || isSubmitting}>
           {t("register", { ns: "login" })}

@@ -94,28 +94,30 @@ function CouponList(): JSX.Element {
       <h2>{t("list", { ns: "coupon" })}</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="buttons">
-        <button
-          type="button"
-          onClick={() => setActiveForm("category")}
-          disabled={activeForm === "category"}
-        >
-          {t("choose_cat", { ns: "coupon" })}
-        </button>
-        <button
-          type="button"
-          onClick={() => setActiveForm("max")}
-          disabled={activeForm === "max"}
-        >
-          {t("enter_max", { ns: "coupon" })}
-        </button>
+        <div className="buttons">
+          <button
+            type="button"
+            onClick={() => setActiveForm("category")}
+            disabled={activeForm === "category"}
+          >
+            {t("choose_cat", { ns: "coupon" })}
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveForm("max")}
+            disabled={activeForm === "max"}
+          >
+            {t("enter_max", { ns: "coupon" })}
+          </button>
 
           {activeForm === "category" ? (
             <>
               {errors?.category ? (
                 <span>{errors.category.message}</span>
               ) : (
-                <label htmlFor="category">{t("category", { ns: "coupon" })} </label>
+                <label htmlFor="category">
+                  {t("category", { ns: "coupon" })}{" "}
+                </label>
               )}
               <select
                 {...register("category")}
@@ -148,16 +150,18 @@ function CouponList(): JSX.Element {
               />
             </>
           ) : null}
-          
-        <button type="submit" disabled={!isValid || isSubmitting}>
-          {t("get", { ns: "coupon" })}
-        </button>
+
+          <button type="submit" disabled={!isValid || isSubmitting}>
+            {t("get", { ns: "coupon" })}
+          </button>
         </div>
       </form>
       <br />
-      <button type="button" onClick={fetchData}>{t("clear", { ns: "coupon" })}</button>
+      <button type="button" onClick={fetchData}>
+        {t("clear", { ns: "coupon" })}
+      </button>
       <br />
-      <div className="coupon-card-container">
+      <div className="card-container">
         {coupons.length !== 0 ? (
           coupons.map((c, idx) => (
             <CouponCard key={`coupon-card-${idx}`} coupon={c} />

@@ -17,7 +17,7 @@ function CouponCard(props: CouponCardProps): JSX.Element {
   const isCustomer =
     store.getState().authReducer.user.clientType === ClientType.CUSTOMER;
   const location = useLocation();
-  const isPurchase = location.pathname == "/customer/all";
+  const isPurchase = location.pathname === "/customer/all" || location.pathname === "/home" ;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const notPurchasable =

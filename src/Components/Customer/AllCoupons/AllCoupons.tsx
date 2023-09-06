@@ -29,17 +29,17 @@ function AllCoupons(): JSX.Element {
   }, []);
 
   return (
-    <div className="AllCoupons">
-      {coupons.length !== 0 ? (
-        coupons.map((c, idx) => (
-          <CouponCard key={`coupon-card-${idx}`} coupon={c} />
-        ))
-      ) : (
-        <EmptyView
-          title={t("empty")}
-          description={t("empty", { ns: "coupon" })}
-        />
-      )}
+    <div className="AllCoupons card-container">
+        {coupons.length !== 0 ? (
+          coupons.map((c, idx) => (
+            <CouponCard key={`coupon-card-${idx}`} coupon={c} />
+          ))
+        ) : (
+          <EmptyView
+            title={t("empty")}
+            description={t("empty", { ns: "coupon" })}
+          />
+        )}
     </div>
   );
 }

@@ -11,17 +11,21 @@ import CustomerCard from "../../Cards/CustomerCard/CustomerCard";
 import { useTranslation } from "react-i18next";
 
 function CustomerList(): JSX.Element {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [customers, setCustomers] = useState<CustomerModel[]>(
     store.getState().customersReducer.customers
   );
   const dispatch = useDispatch();
+  const isLoaded = store.getState().customersReducer.isLoaded;
 
   useEffect(() => {
+    if (isLoaded) {
+      return;
+    }
     webApiService
       .getAllCustomers()
       .then((res) => {
-        notifyService.success(t('got_all_cus',{ns:'messages'}));
+        notifyService.success(t("got_all_cus", { ns: "messages" }));
         setCustomers(res.data);
         dispatch(gotAllCustomersAction(res.data));
       })
@@ -32,18 +36,20 @@ function CustomerList(): JSX.Element {
   }, []);
   return (
     <div className="CustomerList">
-      <h2>{t('title',{ns:'customer'})}</h2>
+      <h2>{t("title", { ns: "customer" })}</h2>
 
-      {customers.length !== 0 ? (
-        customers.map((c, idx) => (
-          <CustomerCard key={`customer-card-${idx}`} customer={c} />
-        ))
-      ) : (
-        <EmptyView
-          title={"No Items Found"}
-          description={t('empty',{ns:'customer'})}
-        />
-      )}
+      <div className="card-container">
+        {customers.length !== 0 ? (
+          customers.map((c, idx) => (
+            <CustomerCard key={`customer-card-${idx}`} customer={c} />
+          ))
+        ) : (
+          <EmptyView
+            title={"No Items Found"}
+            description={t("empty", { ns: "customer" })}
+          />
+        )}
+      </div>
     </div>
   );
 }

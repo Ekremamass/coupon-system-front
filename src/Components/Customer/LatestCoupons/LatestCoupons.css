@@ -15,6 +15,10 @@
     max-width: 600px;
 }
 
+.coupon-container > button{
+    width: 70px;
+}
+
 .coupon-slide-enter {
     transform: translateX(100%);
 }
@@ -32,3 +36,4 @@
     transform: translateX(-100%);
     transition: transform 0.5s ease-in-out;
 }
+

@@ -11,10 +11,6 @@
     margin: 1em;
 }
 
-.Menu * :hover{
-    text-decoration: none;
-}
-
-.Menu >link :hover{
+.Menu a:hover{
     text-decoration: none;
 }

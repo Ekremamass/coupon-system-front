@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CustomerModel } from "../Models/Customer";
 
 interface CustomerState {
-  customers: CustomerModel[];
+  customers: CustomerModel[],
+  isLoaded: boolean;
 }
 
 const initialState: CustomerState = {
   customers: [],
+  isLoaded: false,
 };
 
 export enum ActionType {
@@ -24,6 +26,7 @@ const customersSlice = createSlice({
   reducers: {
     gotAllCustomersAction(state, action: PayloadAction<CustomerModel[]>) {
       state.customers = action.payload;
+      state.isLoaded = true;
     },
     //   gotSingleCustomerAction(state, action: PayloadAction<CustomerModel>) {
     //     state.customers.push(action.payload);

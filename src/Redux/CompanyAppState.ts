@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CompanyModel } from "../Models/Company";
 
 interface CompanyState {
-  companies: CompanyModel[];
+  companies: CompanyModel[],
+  isLoaded: boolean;
 }
 
 const initialState: CompanyState = {
   companies: [],
+  isLoaded: false,
 };
 
 export enum ActionType {
@@ -24,6 +26,7 @@ const companiesSlice = createSlice({
     reducers: {
       gotAllCompaniesAction(state, action: PayloadAction<CompanyModel[]>) {
         state.companies = action.payload;
+        state.isLoaded = true;
       },
       // gotSingleCompanyAction(state, action: PayloadAction<CompanyModel>) {
       //   state.companies.push(action.payload);
@@ -48,7 +51,6 @@ const companiesSlice = createSlice({
   
   export const {
     gotAllCompaniesAction,
-    // gotSingleCompanyAction,
     addedCompanyAction,
     updatedCompanyAction,
     deletedCompanyAction,

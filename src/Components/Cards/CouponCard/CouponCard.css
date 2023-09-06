@@ -1,7 +1,7 @@
 .CouponCard {
   margin: 0;
   padding: 0;
-  height: 400px !important;
+  height: 350px !important;
   position: relative;
   /* Allow child elements to be positioned relative to this container */
   overflow: hidden;
