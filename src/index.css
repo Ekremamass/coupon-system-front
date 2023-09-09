@@ -38,20 +38,22 @@ body,
     --background-color: #ffffff;
     /* Background color for your theme */
     --header-color: #F6F4EB;
+    --title-color: #541C9D;
 }
 
 .light-mode {
-    --primary-color: #7C73C0;
+    --primary-color: #BEADFA;
     /* Primary color for your theme */
-    --secondary-color: #94ADD7;
+    --secondary-color: #D0BFFF;
     /* Secondary color for your theme */
-    --tertiary-color: #E8FFCE;
+    --tertiary-color: #DFCCFB;
     /* Tertiary color for your theme */
     --text-color: #000000;
     /* Text color for your theme */
     --background-color: #ffffff;
     /* Background color for your theme*/
-    --header-color: #ACFADF;
+    --header-color: #FFF3DA;
+    --title-color: #541C9D;
 }
 
 /* Dark Theme */
@@ -62,6 +64,7 @@ body,
     --text-color: #ffffff;
     --background-color: #424242;
     --header-color: #040D12;
+    --title-color: #040D12;
 }
 
 body {
@@ -164,8 +167,8 @@ button:disabled {
     margin: 10px;
 }
 
-.card>h3 {
-    color: var(--tertiary-color);
+.card h3 {
+    color: var(--title-color);
 }
 
 img {
@@ -281,4 +284,10 @@ select:focus {
     /* Adjust the gap as needed */
     margin-top: 20px;
     /* Add some margin for spacing */
+}
+
+.empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

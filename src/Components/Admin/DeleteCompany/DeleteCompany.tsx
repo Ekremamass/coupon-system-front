@@ -23,7 +23,10 @@ function DeleteCompany(): JSX.Element {
         dispatch(deletedCompanyAction(id));
         navigate(-1);
       })
-      .catch((err) => notifyService.error(err));
+      .catch((err) => {
+        notifyService.error(err);
+        navigate(-1);
+      });
   };
 
   const no = () => {

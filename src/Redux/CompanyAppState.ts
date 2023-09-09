@@ -45,6 +45,7 @@ const companiesSlice = createSlice({
       },
       removedCompaniesAction(state) {
         state.companies = [];
+        state.isLoaded = initialState.isLoaded; 
       },
     },
   });

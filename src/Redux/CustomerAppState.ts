@@ -47,6 +47,7 @@ const customersSlice = createSlice({
     },
     removedCustomersAction(state) {
       state.customers = [];
+      state.isLoaded = initialState.isLoaded; 
     },
   },
 });

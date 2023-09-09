@@ -22,6 +22,7 @@ function PurchaseCoupon(): JSX.Element {
         navigate("/customer/coupons");
       })
       .catch((err) => notifyService.error(err));
+      navigate(-1)
   };
 
   const no = () => {

@@ -13,6 +13,7 @@ function Register(): JSX.Element {
 
   return (
     <div className="Register form-look-and-feel">
+      <label>{t("client", { ns: "login" })}</label>
         <select value={selectedOption} onChange={handleChange}>
           <option value="COMPANY">{t("company", { ns: "login" })}</option>
           <option value="CUSTOMER">{t("customer", { ns: "login" })}</option>

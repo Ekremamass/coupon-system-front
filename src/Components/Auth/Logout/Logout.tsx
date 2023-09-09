@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { userLoggedOut } from "../../../Redux/AuthAppState";
 import { removedCompaniesAction } from "../../../Redux/CompanyAppState";
 import { useTranslation } from "react-i18next";
+import { removedCouponsAction } from "../../../Redux/CouponAppState";
+import { removedCustomersAction } from "../../../Redux/CustomerAppState";
 
 function Logout(): JSX.Element {
   const { t } = useTranslation();
@@ -14,6 +16,8 @@ function Logout(): JSX.Element {
   const yes = () => {
     dispatch(userLoggedOut());
     dispatch(removedCompaniesAction());
+    dispatch(removedCouponsAction());
+    dispatch(removedCustomersAction());
     navigate("/login");
   };
 

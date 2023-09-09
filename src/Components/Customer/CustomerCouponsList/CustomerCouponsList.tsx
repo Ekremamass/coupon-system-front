@@ -164,10 +164,10 @@ function CustomerCouponsList(): JSX.Element {
             <CouponCard key={`coupon-card-${idx}`} coupon={c} />
           ))
         ) : (
-          <EmptyView
-            title={t("empty")}
-            description={t("empty", { ns: "coupon" })}
-          />
+            <EmptyView
+              title={t("empty")}
+              description={t("empty", { ns: "coupon" })}
+            />
         )}
       </div>
     </div>

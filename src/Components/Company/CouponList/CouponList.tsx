@@ -19,6 +19,7 @@ function CouponList(): JSX.Element {
   const [coupons, setCoupons] = useState<CouponModel[]>(
     store.getState().couponsReducer.coupons
   );
+  const isLoaded = store.getState().couponsReducer.isLoaded;
   const [inputValue, setInputValue] = useState("");
 
   const clearInput = () => {
@@ -38,6 +39,9 @@ function CouponList(): JSX.Element {
   };
 
   useEffect(() => {
+    if (isLoaded) {
+      return;
+    }
     fetchData();
   }, []);
 

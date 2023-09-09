@@ -10,7 +10,7 @@
     font-size: 40px;
 }
 
-.Header > h1{
+.Header h1{
     margin-left: 200px !important;
 }
 
@@ -23,4 +23,8 @@
 
 .Header > .info *{
     margin: 5px;
+}
+
+.Header a:hover{
+    text-decoration: none;
 }

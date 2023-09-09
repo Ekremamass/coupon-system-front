@@ -42,6 +42,7 @@ const couponsSlice = createSlice({
       },
       removedCouponsAction(state) {
         state.coupons = [];
+        state.isLoaded = initialState.isLoaded; 
       },
     },
   });

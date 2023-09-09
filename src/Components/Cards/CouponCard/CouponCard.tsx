@@ -12,11 +12,11 @@ interface CouponCardProps {
 
 function CouponCard(props: CouponCardProps): JSX.Element {
   const { t } = useTranslation();
+  const location = useLocation();
   const isCompany =
-    store.getState().authReducer.user.clientType === ClientType.COMPANY;
+    store.getState().authReducer.user.clientType === ClientType.COMPANY && location.pathname === "/company/coupons";
   const isCustomer =
     store.getState().authReducer.user.clientType === ClientType.CUSTOMER;
-  const location = useLocation();
   const isPurchase = location.pathname === "/customer/all" || location.pathname === "/home" ;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
