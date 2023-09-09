@@ -18,22 +18,3 @@
 .coupon-container > button{
     width: 90px;
 }
-
-.coupon-slide-enter {
-    transform: translateX(100%);
-}
-
-.coupon-slide-enter-active {
-    transform: translateX(0);
-    transition: transform 0.5s ease-in-out;
-}
-
-.coupon-slide-exit {
-    transform: translateX(0);
-}
-
-.coupon-slide-exit-active {
-    transform: translateX(-100%);
-    transition: transform 0.5s ease-in-out;
-}
-

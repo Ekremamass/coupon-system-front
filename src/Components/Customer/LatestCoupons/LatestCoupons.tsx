@@ -5,7 +5,6 @@ import notifyService from "../../../Services/NotificationService";
 import { useTranslation } from "react-i18next";
 import { CouponModel } from "../../../Models/Coupon";
 import CouponCard from "../../Cards/CouponCard/CouponCard";
-import { Transition } from "react-transition-group";
 import EmptyView from "../../Pages/EmptyView/EmptyView";
 
 function LatestCoupons(): JSX.Element {
@@ -49,6 +48,7 @@ function LatestCoupons(): JSX.Element {
       setCurrentIndex(prevIndex);
     }
   };
+
   return (
     <div className="LatestCoupons">
       {coupons.length > 0 ? (
@@ -56,13 +56,7 @@ function LatestCoupons(): JSX.Element {
           <h1>{t("latest", { ns: "coupon" })}</h1>
           <div className="coupon-container">
             <button onClick={handlePrevious}>{t("previous")}</button>
-            <Transition in={true} timeout={500} classNames="coupon-slide">
-              {(state) => (
-                <div className={`coupon-card-wrapper ${state}`}>
-                  <CouponCard coupon={coupons[currentIndex]} />
-                </div>
-              )}
-            </Transition>
+            <CouponCard coupon={coupons[currentIndex]} />
             <button onClick={handleNext}>{t("next")}</button>
           </div>
         </div>
