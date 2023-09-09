@@ -1,10 +1,61 @@
 .AllCoupons {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Adjust the gap as needed */
-    margin-top: 20px; /* Add some margin for spacing */
+    gap: 20px;
+    /* Adjust the gap as needed */
+    margin-top: 20px;
+    /* Add some margin for spacing */
 }
 
-.AllCoupons > button {
-	margin: 15px;
+.AllCoupons>button {
+    margin: 15px;
+}
+
+.pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    list-style: none;
+}
+
+.pagination-container li {
+    margin: 0 5px;
+}
+
+.pagination-container a {
+    padding: 8px 12px;
+    border: 1px solid var(--secondary-color);
+    text-decoration: none;
+    color: var(--text-color);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.pagination-container a:hover {
+    background-color: var(--tertiary-color);
+    text-decoration: none;
+}
+
+.pagination-container .active-page a {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-color: var(--primary-color);
+}
+
+.pagination-container .break {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination-container .disabled a {
+    pointer-events: none;
+    color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+}
+
+.pagination-container .previous a,
+.pagination-container .next a {
+    background-color: var(--header-color);
 }

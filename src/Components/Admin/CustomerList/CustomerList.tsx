@@ -16,10 +16,9 @@ function CustomerList(): JSX.Element {
     store.getState().customersReducer.customers
   );
   const dispatch = useDispatch();
-  const isLoaded = store.getState().customersReducer.isLoaded;
 
   useEffect(() => {
-    if (isLoaded) {
+    if (store.getState().customersReducer.isLoaded) {
       return;
     }
     webApiService

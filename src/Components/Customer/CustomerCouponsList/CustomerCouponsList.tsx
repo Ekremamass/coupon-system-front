@@ -1,12 +1,9 @@
 import "./CustomerCouponsList.css";
-import { useDispatch } from "react-redux";
 import { Category, CouponModel } from "../../../Models/Coupon";
-import store from "../../../Redux/Store";
 import * as zod from "zod";
 import { useEffect, useState } from "react";
 import webApiService from "../../../Services/WebApiService";
 import notifyService from "../../../Services/NotificationService";
-import { gotAllCouponsAction } from "../../../Redux/CouponAppState";
 import EmptyView from "../../Pages/EmptyView/EmptyView";
 import CouponCard from "../../Cards/CouponCard/CouponCard";
 import { useTranslation } from "react-i18next";
@@ -15,10 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 function CustomerCouponsList(): JSX.Element {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const [coupons, setCoupons] = useState<CouponModel[]>(
-    store.getState().couponsReducer.coupons
-  );
+  const [coupons, setCoupons] = useState<CouponModel[]>([]);
   const [inputValue, setInputValue] = useState("");
 
   const clearInput = () => {
@@ -32,7 +26,6 @@ function CustomerCouponsList(): JSX.Element {
       .then((res) => {
         notifyService.success(t("got_purchased", { ns: "messages" }));
         setCoupons(res.data);
-        dispatch(gotAllCouponsAction(res.data));
       })
       .catch((err) => notifyService.error(err));
   };
@@ -71,7 +64,6 @@ function CustomerCouponsList(): JSX.Element {
             t("got_coupons_cat", { ns: "messages" }) + " " + data.category
           );
           setCoupons(res.data);
-          dispatch(gotAllCouponsAction(res.data));
         })
         .catch((err) => notifyService.error(err));
     } else if (activeForm === "max") {
@@ -83,7 +75,6 @@ function CustomerCouponsList(): JSX.Element {
             t("got_coupons_max", { ns: "messages" }) + " " + data.max
           );
           setCoupons(res.data);
-          dispatch(gotAllCouponsAction(res.data));
         })
         .catch((err) => notifyService.error(err));
     }

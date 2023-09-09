@@ -16,10 +16,9 @@ function CompanyList(): JSX.Element {
     store.getState().companiesReducer.companies
   );
   const dispatch = useDispatch();
-  const isLoaded = store.getState().companiesReducer.isLoaded;
 
   useEffect(() => {
-    if (isLoaded) {
+    if (store.getState().companiesReducer.isLoaded) {
       return;
     }
 
