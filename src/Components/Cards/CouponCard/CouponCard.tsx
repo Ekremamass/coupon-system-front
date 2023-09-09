@@ -21,7 +21,7 @@ function CouponCard(props: CouponCardProps): JSX.Element {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const notPurchasable =
-    props.coupon.amount === 0 || props.coupon.startDate > today || props.coupon.endDate < today ;
+    props.coupon.amount === 0 || props.coupon.endDate < today ;
     
   return (
     <div className="CouponCard card">
