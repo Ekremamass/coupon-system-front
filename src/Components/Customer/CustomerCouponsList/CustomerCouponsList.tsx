@@ -55,6 +55,14 @@ function CustomerCouponsList(): JSX.Element {
 
   const [activeForm, setActiveForm] = useState<"category" | "max">("category");
 
+  const toggleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setActiveForm("max");
+    } else {
+      setActiveForm("category");
+    }
+  };
+
   const onSubmit: SubmitHandler<FormData> = (data: FormData) => {
     if (activeForm === "category") {
       webApiService
@@ -84,20 +92,14 @@ function CustomerCouponsList(): JSX.Element {
       <h2>{t("purchased", { ns: "customer" })}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="buttons">
-          <button
-            type="button"
-            onClick={() => setActiveForm("category")}
-            disabled={activeForm === "category"}
-          >
-            {t("choose_cat", { ns: "coupon" })}
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveForm("max")}
-            disabled={activeForm === "max"}
-          >
-            {t("enter_max", { ns: "coupon" })}
-          </button>
+          <label className="switch">
+            <input
+              type="checkbox"
+              onChange={toggleForm}
+              checked={activeForm === "max"}
+            />
+            <span className="slider round"></span>
+          </label>
 
           {activeForm === "category" ? (
             <>
