@@ -159,8 +159,6 @@ button:disabled {
     color: var(--text-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-    margin: 5px;
-    height: 250px;
 }
 
 .card p {
@@ -280,10 +278,10 @@ select:focus {
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     /* Adjust the gap as needed */
     margin-top: 20px;
     /* Add some margin for spacing */
+    gap: 20px;
 }
 
 .empty {

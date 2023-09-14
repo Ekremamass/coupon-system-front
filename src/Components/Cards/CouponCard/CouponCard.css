@@ -1,7 +1,5 @@
 .CouponCard {
-  margin: 0;
-  padding: 0;
-  height: 350px !important;
+  height: 350px ;
   position: relative;
   /* Allow child elements to be positioned relative to this container */
   overflow: hidden;
@@ -53,4 +51,8 @@
 .CouponCard:hover .detailsContainer {
   bottom: 0;
   /* On hover, slide the details container up */
+}
+
+.tiltWrapper{
+  margin: 20px 10px;
 }

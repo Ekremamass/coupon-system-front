@@ -10,11 +10,11 @@
 .coupon-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 20px auto;
-    max-width: 600px;
+    justify-content: center;
 }
 
-.coupon-container > button{
+
+.coupon-container > button {
     width: 90px;
+    margin: 0 40px; 
 }
